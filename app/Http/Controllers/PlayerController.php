@@ -9,6 +9,7 @@ use App\Http\Repositories\ICharacterLookVariantRepo;
 use App\Http\Repositories\ICharacterRepo;
 use App\Http\Repositories\IItemRepo;
 use App\Http\Repositories\IPlayerRepo;
+use App\Http\Repositories\IWordRepo;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -22,7 +23,8 @@ class PlayerController extends Controller
             $characterLookRepo,
             $characterLookVariantRepo,
             $backpackRepo,
-            $backpackItemRepo;
+            $backpackItemRepo,
+            $wordRepo;
 
 
     public function __construct(IPlayerRepo $playerRepo,
@@ -31,7 +33,8 @@ class PlayerController extends Controller
                                 ICharacterLookRepo $characterLookRepo,
                                 ICharacterLookVariantRepo $characterLookVariantRepo,
                                 IBackpackRepo $backpackRepo,
-                                IBackpackItemRepo $backpackItemRepo)
+                                IBackpackItemRepo $backpackItemRepo,
+                                IWordRepo $wordRepo)
     {
         $this -> playerRepo = $playerRepo;
         $this -> characterRepo = $characterRepo;
@@ -40,10 +43,11 @@ class PlayerController extends Controller
         $this -> characterLookVariantRepo = $characterLookVariantRepo;
         $this -> backpackRepo = $backpackRepo;
         $this -> backpackItemRepo = $backpackItemRepo;
+        $this -> wordRepo = $wordRepo;
     }
 
     public function index(){
-        dd(1000 * ((5/(1+4)*50)+3)/100);
+//        dd(1000 * ((5/(1+4)*50)+3)/100);
         $player = $this -> playerRepo -> getByUserID($this->user()->id);
         return view('home');
     }
@@ -74,8 +78,8 @@ class PlayerController extends Controller
 
         $player = $this -> playerRepo -> create($user_id, $character->id, $backpack -> id);
 
-        // TODO: name generator
-        $weapon = $this -> itemRepo -> create('sword', 'Novice Sword', array(
+        $itemName = $this -> wordRepo -> generate('item');
+        $weapon = $this -> itemRepo -> create('sword', $itemName, array(
             'damage_min_points' => 10,
             'damage_max_points' => 20,
         ), 1, 1);
