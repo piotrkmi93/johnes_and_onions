@@ -1,0 +1,20 @@
+.character-creator-preview{
+    float: left;
+    width: 600px;
+    height: 500px;
+    border: 1px solid black;
+    position: relative;
+}
+
+.character-creator-preview > img{
+    position: absolute;
+}
+
+.character-creator-pickers i{
+    transition: .3s ease all;
+    cursor: pointer;
+}
+
+.character-creator-pickers i:hover{
+    color: #2ca02c;
+}
