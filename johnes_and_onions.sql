@@ -480,3 +480,47 @@ ALTER TABLE `words`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- 09.11.2016 Aktualizacja baz Lukasz Adler
+TRUNCATE TABLE  forge.look_variant_colors
+INSERT INTO forge.look_variant_colors (name) VALUES ('brown');
+INSERT INTO forge.look_variant_colors (name) VALUES ('red');
+INSERT INTO forge.look_variant_colors (name) VALUES ('yellow');
+INSERT INTO forge.look_variant_colors (name) VALUES ('purple');
+INSERT INTO forge.look_variant_colors (name) VALUES ('green');
+INSERT INTO forge.look_variant_colors (name) VALUES ('orange');
+INSERT INTO forge.look_variant_colors (name) VALUES ('pink');
+INSERT INTO forge.look_variant_colors (name) VALUES ('white');
+INSERT INTO forge.look_variant_colors (name) VALUES ('blue');
+
+TRUNCATE TABLE  forge.character_look_variants
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('body', 1, 'images/body1.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyebrow_1', 1, 'images/player/eyebrows/1/brwi1.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyes_1', 1, 'images/player/eyes/1/oczy1.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('hair_1', 1, 'images/player/hairs/1/hair1.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('head', 1, 'images/head1.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('mouth', null, 'images/mouth1.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('nose', null, 'images/nose1.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyebrow_1', 2, 'images/player/eyebrows/1/brwi2.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyebrow_1', 3, 'images/player/eyebrows/1/brwi3.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyebrow_1', 4, 'images/player/eyebrows/1/brwi4.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyebrow_1', 5, 'images/player/eyebrows/1/brwi5.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyebrow_1', 6, 'images/player/eyebrows/1/brwi6.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyebrow_1', 7, 'images/player/eyebrows/1/brwi7.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyebrow_1', 8, 'images/player/eyebrows/1/brwi8.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyebrow_1', 9, 'images/player/eyebrows/1/brwi9.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('hair_1', 2, 'images/player/hairs/1/hair2.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('hair_1', 3, 'images/player/hairs/1/hair3.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('hair_1', 4, 'images/player/hairs/1/hair4.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('hair_1', 5, 'images/player/hairs/1/hair5.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('hair_1', 6, 'images/player/hairs/1/hair6.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('hair_1', 7, 'images/player/hairs/1/hair7.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('hair_1', 8, 'images/player/hairs/1/hair8.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('hair_1', 9, 'images/player/hairs/1/hair9.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyes_1', 2, 'images/player/eyes/1/oczy2.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyes_1', 3, 'images/player/eyes/1/oczy3.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyes_1', 4, 'images/player/eyes/1/oczy4.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyes_1', 5, 'images/player/eyes/1/oczy5.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyes_1', 6, 'images/player/eyes/1/oczy6.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyes_1', 7, 'images/player/eyes/1/oczy7.png');
+INSERT INTO forge.character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyes_1', 8, 'images/player/eyes/1/oczy8.png');
