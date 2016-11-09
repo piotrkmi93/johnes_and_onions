@@ -43,7 +43,6 @@ class PlayerController extends Controller
     }
 
     public function index(){
-        dd(1000 * ((5/(1+4)*50)+3)/100);
         $player = $this -> playerRepo -> getByUserID($this->user()->id);
         return view('home');
     }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="jaoApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,6 +16,8 @@
     <link href="/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Scripts -->
+    <script src="/js/libraries/angular/angular.js"></script>
+    <script src="/js/angular/jaoApp.js"></script>
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
