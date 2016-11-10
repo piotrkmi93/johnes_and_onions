@@ -27,7 +27,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -57,24 +57,25 @@
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                            @if(getPlayer())
+                            <li><a>{{ getPlayer()->character->name }}</a></li>
+                            <li class="player-quick-info">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ (getPlayer()->experience_points * 100) / getPlayer()->required_experience_points }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ (getPlayer()->experience_points * 100) / getPlayer()->required_experience_points }}%"></div>
+                                    <span>Level {{ getPlayer()->character->level }}</span>
+                                </div>
+                            </li>
+                            @endif
+                            <li>
+                                <a href="{{ url('/logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-power-off" aria-hidden="true"></i>
                                 </a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </li>
                         @endif
                     </ul>
@@ -82,7 +83,18 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="{{ Auth::user() && isPlayable() ? 'container-fluid' : 'container' }}">
+            <div class="row">
+                @if(Auth::user() && isPlayable())
+                <div class="col-md-3">
+                    @include('partials.sidebar')
+                </div>
+                @endif
+                <div class="{{ Auth::user() && isPlayable() ? 'col-md-9' : 'col-md-12'}}">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->

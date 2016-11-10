@@ -22,16 +22,16 @@ class CharacterLookRepo implements ICharacterLookRepo
         $this -> model = $model;
     }
 
-    public function create($hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id)
+    public function create($body_variant_id, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id)
     {
         $characterLook = $this -> model -> newInstance();
-        return $this -> save($characterLook, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id);
+        return $this -> save($body_variant_id, $characterLook, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id);
     }
 
-    public function edit($id, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id)
+    public function edit($id, $body_variant_id, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id)
     {
         $characterLook = $this -> get($id);
-        return $this -> save($characterLook, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id);
+        return $this -> save($characterLook, $body_variant_id, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id);
     }
 
     public function delete($id)
@@ -41,11 +41,20 @@ class CharacterLookRepo implements ICharacterLookRepo
 
     public function get($id)
     {
-        return $this -> model -> find($id);
+        return $this -> model
+            -> with('hairVariant')
+            -> with('eyebrowVariant')
+            -> with('eyesVariant')
+            -> with('mouthVariant')
+            -> with('headVariant')
+            -> with('noseVariant')
+            -> with('bodyVariant')
+            -> find($id);
     }
 
-    private function save(&$characterLook, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id)
+    private function save(&$characterLook, $body_variant_id, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id)
     {
+        $characterLook -> body_variant_id = $body_variant_id;
         $characterLook -> hair_variant_id = $hair_variant_id;
         $characterLook -> eyebrow_variant_id = $eyebrow_variant_id;
         $characterLook -> eyes_variant_id = $eyes_variant_id;

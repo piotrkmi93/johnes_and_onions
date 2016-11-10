@@ -1,3 +1,7 @@
+.btn{
+    border-radius: 0;
+}
+
 .character-creator-preview{
     float: left;
     width: 600px;
@@ -17,4 +21,44 @@
 
 .character-creator-pickers i:hover{
     color: #2ca02c;
+}
+
+.player-quick-info{
+    margin-top: 14px;
+    width: 30vw;
+    position: relative;
+}
+
+.player-quick-info > div {
+    padding: 0;
+    margin: 0;
+}
+
+.player-quick-info > div > span {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.fa.fa-power-off{
+    color: red;
+}
+
+.sidebar a{
+    margin: 10px;
+    width: auto;
+}
+
+.item-box{
+    height: 80px;
+    width: 80px;
+    background-color: red;
+    margin: 5px auto;
+}
+
+.character-box{
+    width: 350px;
+    height: 350px;
+    background-color: green;
+    margin: 5px auto 5px auto;
 }

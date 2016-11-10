@@ -8,6 +8,10 @@ class CharacterLook extends Model
 {
     public $timestamps = false;
 
+    public function bodyVariant(){
+        return $this -> belongsTo(CharacterLookVariant::class);
+    }
+
     public function hairVariant(){
         return $this -> belongsTo(CharacterLookVariant::class);
     }

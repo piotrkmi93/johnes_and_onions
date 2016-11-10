@@ -10,7 +10,7 @@ class Player extends Model
 
     public function character()
     {
-        return $this -> belongsTo(Character::class);
+        return $this -> belongsTo(Character::class)->with('characterLook');
     }
 
     public function user()
