@@ -1,41 +1,46 @@
-<script src="/js/angular/playerModule/jaoApp.player.js"></script>
-<script src="/js/angular/playerModule/jaoApp.player.createController.js"></script>
-
-
-<div class="col-md-10 col-md-offset-1">
+<div class="col s10 offset-s1">
     <div class="panel panel-default">
         <div class="panel-body">
-            <h1 class="text-center">Welcome to J&O, You have to create your character.</h1>
-            <hr>
+            <div class="creator-title">
+                <h3 class="text-center">Welcome to J&O, You have to create your character.</h3>
+            </div>
             <form method="POST" action="{{ route('player.create') }}" ng-controller="createPlayerController as player">
                 {{ csrf_field() }}
 
-                <input class="form-control" ng-model="player.name" name="name" id="name" maxlength="255" placeholder="Type your character name" required>
-                <div class="character-creator">
-                    <div class="character-creator-preview">
-                        <img src="{{ asset('images/body1.png') }}">
-                        <img src="{{ asset('images/head1.png') }}">
-                        <img ng-src="//player.eyebrow.image_url//" >
-                        <img ng-src="//player.eyes.image_url//">
-                        <img ng-src="//player.hair.image_url//">
-                        <img src="{{ asset('images/nose1.png') }}">
-                        <img src="{{ asset('images/mouth1.png') }}">
-                    </div>
-                    <div class="character-creator-pickers text-center">
-                        {{-- variants --}}
-                        <h3><i class="fa fa-arrow-left" aria-hidden="true"></i> Head <i class="fa fa-arrow-right" aria-hidden="true"></i></h3>
-                        <h3><i class="fa fa-arrow-left" aria-hidden="true"></i> Eyebrow <i class="fa fa-arrow-right" aria-hidden="true"></i></h3>
-                        <h3><i class="fa fa-arrow-left" aria-hidden="true"></i> Eyes <i class="fa fa-arrow-right" aria-hidden="true"></i></h3>
-                        <h3><i class="fa fa-arrow-left" aria-hidden="true"></i> Hair <i class="fa fa-arrow-right" aria-hidden="true"></i></h3>
-                        <h3><i class="fa fa-arrow-left" aria-hidden="true"></i> Nose <i class="fa fa-arrow-right" aria-hidden="true"></i></h3>
-                        <h3><i class="fa fa-arrow-left" aria-hidden="true"></i> Mouth <i class="fa fa-arrow-right" aria-hidden="true"></i></h3>
+                <div class="input-field col s6 offset-s3">
+                    <input ng-model="player.name" type="text" name="name" id="name" maxlength="24" class="validate" required>
+                    <label for="name">Character name</label>
+                </div>
 
-                        <hr>
+                <div class="input-field col s12">
 
-                        {{-- colors --}}
-                        <h3><i class="fa fa-arrow-left" aria-hidden="true"></i> Body color <i class="fa fa-arrow-right" aria-hidden="true"></i></h3>
-                        <h3><i ng-click="player.previousHairColor()" class="fa fa-arrow-left" aria-hidden="true"></i> Hair color <i ng-click="player.nextHairColor()" class="fa fa-arrow-right" aria-hidden="true"></i></h3>
-                        <h3><i ng-click="player.previousEyesColor()" class="fa fa-arrow-left" aria-hidden="true"></i> Eyes color <i ng-click="player.nextEyesColor()" class="fa fa-arrow-right" aria-hidden="true"></i></h3>
+                    <div class="character-creator">
+                        <div class="character-creator-preview col s6">
+                            <img src="{{ asset('images/body1.png') }}">
+                            <img src="{{ asset('images/head1.png') }}">
+                            <img ng-src="//player.eyebrow.image_url//" >
+                            <img ng-src="//player.eyes.image_url//">
+                            <img ng-src="//player.hair.image_url//">
+                            <img src="{{ asset('images/nose1.png') }}">
+                            <img src="{{ asset('images/mouth1.png') }}">
+                        </div>
+                        <div class="character-creator-pickers col s6">
+
+                            {{-- variants --}}
+                            <h5><button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Eyebrow <button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
+                            <h5><button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Head <button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
+                            <h5><button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Eyes <button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
+                            <h5><button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Hair <button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
+                            <h5><button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Nose <button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
+                            <h5><button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Mouth <button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
+
+                            <br>
+
+                            {{-- colors --}}
+                            <h5><button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Body color <button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
+                            <h5><button type="button" ng-click="player.previousHairColor()" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Hair color <button type="button" ng-click="player.nextHairColor()" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
+                            <h5><button type="button" ng-click="player.previousEyesColor()" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Eyes color <button type="button" ng-click="player.nextEyesColor()" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
+                        </div>
                     </div>
                 </div>
 
@@ -48,10 +53,13 @@
                 <input type="hidden" name="nose_id" value="8">
                 <input type="hidden" name="mouth_id" value="7">
 
-                <hr style="clear: both;">
-                <div class="text-center">
-                    <button class="btn btn-success btn-lg" type="submit">Start adventure!</button>
-                    <button class="btn btn-danger btn-lg" type="button" ng-click="player.reset()">Reset</button>
+                <br style="clear: both;">
+
+                <div class="col s6 offset-s3 character-creator-pickers">
+                    <br>
+                    <hr>
+                    <button class="waves-effect waves-light btn" type="submit">Start adventure!</button>
+                    <button class="waves-effect waves-light btn" type="button" ng-click="player.reset()">Reset</button>
                 </div>
 
             </form>

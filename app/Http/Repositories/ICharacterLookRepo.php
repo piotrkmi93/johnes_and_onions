@@ -12,8 +12,8 @@ namespace App\Http\Repositories;
 interface ICharacterLookRepo
 {
 
-    public function create($hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id);
-    public function edit($id, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id);
+    public function create($body_variant_id, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id);
+    public function edit($id, $body_variant_id, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id);
     public function delete($id);
     public function get($id);
 }

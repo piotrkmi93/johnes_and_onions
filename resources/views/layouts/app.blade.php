@@ -11,9 +11,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-    <link href="/css/main.css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ asset('/css/materialize.min.css') }}" rel="stylesheet">
+    {{--<link href="/css/app.css" rel="stylesheet">--}}
+    <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/jquery.mCustomScrollbar.css') }}" rel="stylesheet">
+
 
     <!-- Scripts -->
     <script src="/js/libraries/angular/angular.js"></script>
@@ -22,82 +25,34 @@
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
+
     </script>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+        @include('partials.navbar')
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
-                        @else
-                            @if(getPlayer())
-                            <li><a>{{ getPlayer()->character->name }}</a></li>
-                            <li class="player-quick-info">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ (getPlayer()->experience_points * 100) / getPlayer()->required_experience_points }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ (getPlayer()->experience_points * 100) / getPlayer()->required_experience_points }}%"></div>
-                                    <span>Level {{ getPlayer()->character->level }}</span>
-                                </div>
-                            </li>
-                            @endif
-                            <li>
-                                <a href="{{ url('/logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-power-off" aria-hidden="true"></i>
-                                </a>
-
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
+        <div class="row" class="mCustomScrollbar" data-mcs-theme="dark">
+            @if(Auth::user() && isPlayable())
+            <div class="col s3">
+                @include('partials.sidebar')
             </div>
-        </nav>
-
-        <div class="{{ Auth::user() && isPlayable() ? 'container-fluid' : 'container' }}">
-            <div class="row">
-                @if(Auth::user() && isPlayable())
-                <div class="col-md-3">
-                    @include('partials.sidebar')
-                </div>
-                @endif
-                <div class="{{ Auth::user() && isPlayable() ? 'col-md-9' : 'col-md-12'}}">
-                    @yield('content')
-                </div>
+            @endif
+            <div class="col {{ Auth::user() && isPlayable() ? 's9' : 's12'}}">
+                @yield('content')
             </div>
         </div>
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="{{ asset('/js/materialize.min.js') }}"></script>
+    <script src="{{ asset('/js/app.js') }}"></script>
+
+    <script src="{{ asset('/js/angular/playerModule/jaoApp.player.js') }}"></script>
+    <script src="{{ asset('/js/angular/playerModule/jaoApp.player.createController.js') }}"></script>
+
 </body>
 </html>

@@ -71,7 +71,7 @@ class Player extends Model
             'dexterity_points' => $character -> dexterity_points,
             'intelligence_points' => $character -> intelligence_points,
             'durability_points' => $character -> durability_points,
-            'lucky_points' => $character -> lucky_points,
+            'luck_points' => $character -> luck_points,
             'armor_points' => 0,
             'damage_min_points' => 0,
             'damage_max_points' => 0,
@@ -82,7 +82,7 @@ class Player extends Model
             $statistics['dexterity_points'] += $this->accessory -> dexterity_points;
             $statistics['intelligence_points'] += $this->accessory -> intelligence_points;
             $statistics['durability_points'] += $this->accessory -> durability_points;
-            $statistics['lucky_points'] += $this->accessory -> lucky_points;
+            $statistics['luck_points'] += $this->accessory -> luck_points;
             $statistics['armor_points'] += $this->accessory -> armor_points;
         }
 
@@ -91,7 +91,7 @@ class Player extends Model
             $statistics['dexterity_points'] += $this->ring -> dexterity_points;
             $statistics['intelligence_points'] += $this->ring -> intelligence_points;
             $statistics['durability_points'] += $this->ring -> durability_points;
-            $statistics['lucky_points'] += $this->ring -> lucky_points;
+            $statistics['luck_points'] += $this->ring -> luck_points;
             $statistics['armor_points'] += $this->ring -> armor_points;
         }
 
@@ -100,7 +100,7 @@ class Player extends Model
             $statistics['dexterity_points'] += $this->necklace -> dexterity_points;
             $statistics['intelligence_points'] += $this->necklace -> intelligence_points;
             $statistics['durability_points'] += $this->necklace -> durability_points;
-            $statistics['lucky_points'] += $this->necklace -> lucky_points;
+            $statistics['luck_points'] += $this->necklace -> luck_points;
             $statistics['armor_points'] += $this->necklace -> armor_points;
         }
 
@@ -109,7 +109,7 @@ class Player extends Model
             $statistics['dexterity_points'] += $this->boots -> dexterity_points;
             $statistics['intelligence_points'] += $this->boots -> intelligence_points;
             $statistics['durability_points'] += $this->boots -> durability_points;
-            $statistics['lucky_points'] += $this->boots -> lucky_points;
+            $statistics['luck_points'] += $this->boots -> luck_points;
             $statistics['armor_points'] += $this->boots -> armor_points;
         }
 
@@ -118,7 +118,7 @@ class Player extends Model
             $statistics['dexterity_points'] += $this->belt -> dexterity_points;
             $statistics['intelligence_points'] += $this->belt -> intelligence_points;
             $statistics['durability_points'] += $this->belt -> durability_points;
-            $statistics['lucky_points'] += $this->belt -> lucky_points;
+            $statistics['luck_points'] += $this->belt -> luck_points;
             $statistics['armor_points'] += $this->belt -> armor_points;
         }
 
@@ -127,7 +127,7 @@ class Player extends Model
             $statistics['dexterity_points'] += $this->gloves -> dexterity_points;
             $statistics['intelligence_points'] += $this->gloves -> intelligence_points;
             $statistics['durability_points'] += $this->gloves -> durability_points;
-            $statistics['lucky_points'] += $this->gloves -> lucky_points;
+            $statistics['luck_points'] += $this->gloves -> luck_points;
             $statistics['armor_points'] += $this->gloves -> armor_points;
         }
 
@@ -136,7 +136,7 @@ class Player extends Model
             $statistics['dexterity_points'] += $this->armor -> dexterity_points;
             $statistics['intelligence_points'] += $this->armor -> intelligence_points;
             $statistics['durability_points'] += $this->armor -> durability_points;
-            $statistics['lucky_points'] += $this->armor -> lucky_points;
+            $statistics['luck_points'] += $this->armor -> luck_points;
             $statistics['armor_points'] += $this->armor -> armor_points;
         }
 
@@ -145,7 +145,7 @@ class Player extends Model
             $statistics['dexterity_points'] += $this->helmet -> dexterity_points;
             $statistics['intelligence_points'] += $this->helmet -> intelligence_points;
             $statistics['durability_points'] += $this->helmet -> durability_points;
-            $statistics['lucky_points'] += $this->helmet -> lucky_points;
+            $statistics['luck_points'] += $this->helmet -> luck_points;
             $statistics['armor_points'] += $this->helmet -> armor_points;
         }
 
@@ -154,7 +154,7 @@ class Player extends Model
             $statistics['dexterity_points'] += $this->shield -> dexterity_points;
             $statistics['intelligence_points'] += $this->shield -> intelligence_points;
             $statistics['durability_points'] += $this->shield -> durability_points;
-            $statistics['lucky_points'] += $this->shield -> lucky_points;
+            $statistics['luck_points'] += $this->shield -> luck_points;
             $statistics['armor_points'] += $this->shield -> armor_points;
         }
 
@@ -163,7 +163,7 @@ class Player extends Model
             $statistics['dexterity_points'] += $this->weapon -> dexterity_points;
             $statistics['intelligence_points'] += $this->weapon -> intelligence_points;
             $statistics['durability_points'] += $this->weapon -> durability_points;
-            $statistics['lucky_points'] += $this->weapon -> lucky_points;
+            $statistics['luck_points'] += $this->weapon -> luck_points;
             $statistics['armor_points'] += $this->weapon -> armor_points;
             $statistics['damage_min_points'] = $this->weapon -> damage_min_points * (1 + $statistics['strength_points'] / 10);
             $statistics['damage_max_points'] = $this->weapon -> damage_max_points * (1 + $statistics['strength_points'] / 10);
