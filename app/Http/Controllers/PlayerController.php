@@ -47,8 +47,14 @@ class PlayerController extends Controller
     }
 
     public function index(){
-        $player = $this -> playerRepo -> getByUserID($this->user()->id);
+//        $player = $this -> playerRepo -> getByUserID($this->user()->id);
         return view('home');
+    }
+
+    public function character(){
+        $player = $this -> playerRepo -> getByUserID($this->user()->id);
+//        dd($player->getStatistics());
+        return view('character', compact('player'));
     }
 
     public function getCharacterLookVariants(){
@@ -65,8 +71,9 @@ class PlayerController extends Controller
         $hair_id = $request -> hair_id;
         $nose_id = $request -> nose_id;
         $mouth_id = $request -> mouth_id;
+        $body_id = $request -> body_id;
 
-        $character_look = $this -> characterLookRepo -> create($hair_id, $eyebrow_id, $eyes_id, $mouth_id, $head_id, $nose_id);
+        $character_look = $this -> characterLookRepo -> create($body_id, $hair_id, $eyebrow_id, $eyes_id, $mouth_id, $head_id, $nose_id);
 
         $backpack = $this -> backpackRepo -> create();
 

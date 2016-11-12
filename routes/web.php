@@ -21,6 +21,9 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/', 'PlayerController@index');
     Route::post('player/create', 'PlayerController@create')->name('player.create');
+
+    // TODO make middleware for playables
+    Route::get('/character', 'PlayerController@character') -> name('player.character');
     
 });
 

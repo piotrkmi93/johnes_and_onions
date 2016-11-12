@@ -53,7 +53,7 @@ class CharacterRepo implements ICharacterRepo
 
     public function get($id)
     {
-        return $this -> model -> find($id);
+        return $this -> model -> with('characterLook') -> find($id);
     }
 
     public function increaseStrength($id)

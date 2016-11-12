@@ -2,12 +2,18 @@
     float: left;
     width: 600px;
     height: 500px;
-    border: 1px solid black;
+    border: 5px solid black;
     position: relative;
+    background-image: url("../images/background.png");
+    background-size: cover;
 }
 
 .character-creator-preview > img{
     position: absolute;
+}
+
+.character-creator-pickers{
+    text-align: center;
 }
 
 .character-creator-pickers i{
@@ -15,6 +21,83 @@
     cursor: pointer;
 }
 
-.character-creator-pickers i:hover{
-    color: #2ca02c;
+body, #app, #app>.row{
+    overflow: hidden;
+}
+
+.player-quick-info{
+    width: 10vw;
+    position: relative;
+    text-align: center;
+}
+
+.player-quick-info > div {
+    padding: 0;
+    margin: 0;
+    top: 40px;
+    position: absolute;
+}
+
+.fa.fa-power-off {
+    color: #ff8a80;
+}
+
+.item-box{
+    height: 80px;
+    width: 80px;
+    margin: 5px auto;
+    border: 5px solid black;
+
+    text-wrap: normal;
+}
+
+.character-box{
+    width: 350px;
+    height: 350px;
+    position: relative;
+    margin: 5px auto 5px auto;
+    background-image: url("../images/background.png");
+    border: 5px solid black;
+}
+
+nav{
+    background-color: #26a69a;
+}
+
+.brand-logo{
+    margin-left: 10px;
+}
+
+.sidebar .btn{
+    width: 100%;
+    margin: 2px auto;
+}
+
+.progress .determinate{
+    background-color: #fb8c00;
+}
+
+
+.character-box > img {
+    position: absolute;
+    width:100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.character-box-info{
+    text-align: center;
+}
+
+.backpack-box > div{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.backpack-box > div > div{
+    display: inline-block;
+}
+
+.creator-title{
+    text-align: center;
 }
