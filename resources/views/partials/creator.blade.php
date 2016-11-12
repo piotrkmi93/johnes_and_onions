@@ -16,9 +16,9 @@
                             <div class="character-creator-preview">
                                 <img src="{{ asset('images/body1.png') }}">
                                 <img src="{{ asset('images/head1.png') }}">
-                                <img ng-src="//player.eyebrow.image_url//" >
-                                <img ng-src="//player.eyes.image_url//">
-                                <img ng-src="//player.hair.image_url//">
+                                <img ng-src="//player.selectedEyebrow.image_url//" >
+                                <img ng-src="//player.selectedEyes.image_url//">
+                                <img ng-src="//player.selectedHair.image_url//">
                                 <img src="{{ asset('images/nose1.png') }}">
                                 <img src="{{ asset('images/mouth1.png') }}">
                             </div>
@@ -42,10 +42,10 @@
 
                         {{-- tymczasowo na sztywno --}}
                         <input type="hidden" name="body_id" value="1">
-                        <input type="hidden" name="eyebrow_id" value="//player.eyebrow.id//">
+                        <input type="hidden" name="eyebrow_id" value="//player.selectedEyebrow.id//">
                         <input type="hidden" name="head_id" value="5">
-                        <input type="hidden" name="eyes_id" value="//player.eyes.id//">
-                        <input type="hidden" name="hair_id" value="//player.hair.id//">
+                        <input type="hidden" name="eyes_id" value="//player.selectedEyes.id//">
+                        <input type="hidden" name="hair_id" value="//player.selectedHair.id//">
                         <input type="hidden" name="nose_id" value="8">
                         <input type="hidden" name="mouth_id" value="7">
 

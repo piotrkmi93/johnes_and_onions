@@ -10,16 +10,16 @@
     function createPlayerController($http){
         var self = this;
 
-        var eyebrows = [];
-        var hairs = [];
-        var eyes = [];
+        self.eyebrow = {};
+        self.hair = {};
+        self.eyesArray = {};
 
-        self.selectedEyebrowVariant = 0;
-        self.selectedHairVariant = 0;
+        self.selectedEyebrowVariant = 1;
+        self.selectedHairVariant = 1;
 
         self.selectedHairColor = 1;
 
-        self.selectedEyesVariant = 0;
+        self.selectedEyesVariant = 1;
         self.selectedEyesColor = 1;
 
         self.nextHairColor = nextHairColor;
@@ -67,34 +67,38 @@
         }
 
         function setHairVariants(){
-            self.eyebrow = eyebrows[self.selectedEyebrowVariant].find(variantFinder(self.selectedHairColor))
-            self.hair = hairs[self.selectedHairVariant].find(variantFinder(self.selectedHairColor))
+            self.selectedEyebrow = self.eyebrow[self.selectedEyebrowVariant].find(variantFinder(self.selectedHairColor))
+            self.selectedHair = self.hair[self.selectedHairVariant].find(variantFinder(self.selectedHairColor))
         }
 
         function setEyesVariants(){
-            self.eyes = eyes[self.selectedEyesVariant].find(variantFinder(self.selectedEyesColor))
+            self.selectedEyes = self.eyes[self.selectedEyesVariant].find(variantFinder(self.selectedEyesColor))
         }
 
         function splitVariants(variants){
-            eyebrows.push(variants
-                .filter(function(variant){ return getVariantType(variant, 'eyebrow_1');} )
-                .sort(sortByColor));
+            var types = Enumerable.From(variants)
+                .Distinct(function(x){return x.type})
+                .Select(getVariantTypes)
+                .ToArray();
 
-            hairs.push(variants
-                .filter(function(variant){ return getVariantType(variant, 'hair_1');} )
-                .sort(sortByColor));
+            for(var i = 0; i < types.length; ++i){
+                var type = Object.keys(types[i])[0];
+                if (!types[i][type]) continue;  // TODO Wywalić
+                var number = types[i][type];
+                self[type] = [];
+                self[type][number] = variants
+                    .filter(function(variant){ return getVariantType(variant, type + '_' + number);} )
+                    .sort(sortByColor);
 
-            eyes.push(variants
-                .filter(function(variant){ return getVariantType(variant, 'eyes_1');} )
-                .sort(sortByColor));
+            }
 
             setDefaults();
         }
 
         function setDefaults(){
-            self.eyebrow = eyebrows[0][0];
-            self.hair = hairs[0][0];
-            self.eyes = eyes[0][0];
+            self.selectedEyebrow = self.eyebrow[1][0];
+            self.selectedHair = self.hair[1][0];
+            self.selectedEyes = self.eyes[1][0];
         }
 
         function reset(){
@@ -114,6 +118,13 @@
 
         function sortByColor(v1, v2){
             return v1.look_variant_color_id - v2.look_variant_color_id;
+        }
+
+        function getVariantTypes(variant){
+            var array = variant.type.split('_');
+            var result = {};
+            result[array[0]] = array[1];
+            return result;
         }
     }
 })();

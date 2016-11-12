@@ -16,6 +16,7 @@
     <link href="/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Scripts -->
+    <script src="/js/libraries/linq/linq.js"></script>
     <script src="/js/libraries/angular/angular.js"></script>
     <script src="/js/angular/jaoApp.js"></script>
     <script>
