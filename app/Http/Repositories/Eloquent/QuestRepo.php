@@ -36,8 +36,9 @@ class QuestRepo implements IQuestRepo
             $player -> required_experience_points * 0.1,
             $player -> required_experience_points * 0.2
         );
+
         if(isset($item_id)){
-            $quest -> item_id = $item_id;
+            $quest -> item_reward_id = $item_id;
         }
 
         $quest -> monster_id = $monster_id;
@@ -62,7 +63,7 @@ class QuestRepo implements IQuestRepo
 
     public function get($id)
     {
-        return $this -> model -> find($id);
+        return $this -> model -> with('itemReward') -> find($id);
     }
 
     public function start($id)
@@ -74,7 +75,7 @@ class QuestRepo implements IQuestRepo
 
     public function getByPlayerId($player_id)
     {
-        return $this -> model -> where('player_id', $player_id) -> get();
+        return $this -> model -> where('player_id', $player_id) -> with('itemReward') -> get();
     }
 
 

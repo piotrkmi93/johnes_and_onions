@@ -16,7 +16,7 @@ class Quest extends Model
         return $this -> belongsTo(Monster::class);
     }
 
-    public function item(){
-        return $this -> belongsTo(Item::class);
+    public function itemReward(){
+        return $this -> belongsTo(Item::class) -> with('itemLook');
     }
 }

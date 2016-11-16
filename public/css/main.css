@@ -22,7 +22,7 @@
 }
 
 body, #app, #app>.row{
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .player-quick-info{

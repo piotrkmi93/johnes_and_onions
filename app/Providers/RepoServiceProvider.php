@@ -7,6 +7,7 @@ use App\Http\Repositories\Eloquent\BackpackRepo;
 use App\Http\Repositories\Eloquent\CharacterLookRepo;
 use App\Http\Repositories\Eloquent\CharacterLookVariantRepo;
 use App\Http\Repositories\Eloquent\CharacterRepo;
+use App\Http\Repositories\Eloquent\ItemLookRepo;
 use App\Http\Repositories\Eloquent\ItemRepo;
 use App\Http\Repositories\Eloquent\LookVariantColorRepo;
 use App\Http\Repositories\Eloquent\MonsterRepo;
@@ -19,6 +20,7 @@ use App\Http\Repositories\IBackpackRepo;
 use App\Http\Repositories\ICharacterLookRepo;
 use App\Http\Repositories\ICharacterLookVariantRepo;
 use App\Http\Repositories\ICharacterRepo;
+use App\Http\Repositories\IItemLookRepo;
 use App\Http\Repositories\IItemRepo;
 use App\Http\Repositories\ILookVariantColorRepo;
 use App\Http\Repositories\IMonsterRepo;
@@ -59,5 +61,6 @@ class RepoServiceProvider extends ServiceProvider
         $this -> app -> singleton(IQuestRepo::class, QuestRepo::class);
         $this -> app -> singleton(IMonsterRepo::class, MonsterRepo::class);
         $this -> app -> singleton(IWordRepo::class, WordRepo::class);
+        $this -> app -> singleton(IItemLookRepo::class, ItemLookRepo::class);
     }
 }
