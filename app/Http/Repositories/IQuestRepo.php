@@ -17,4 +17,5 @@ interface IQuestRepo
     public function delete($id);
     public function get($id);
     public function start($id);
+    public function getByPlayerId($player_id);
 }

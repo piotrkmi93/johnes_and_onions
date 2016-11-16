@@ -35,7 +35,7 @@ class CharacterLookVariantRepo implements ICharacterLookVariantRepo
 
     public function getRandom($type)
     {
-        return $this -> model -> where('type', $type) -> orderBy(DB::raw('RAND()')) -> first();
+        return $this -> model -> where('type', 'like', $type.'%') -> orderBy(DB::raw('RAND()')) -> first();
     }
 
 

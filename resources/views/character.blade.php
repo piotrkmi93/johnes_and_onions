@@ -81,6 +81,10 @@
 
                     <div class="col s6">
                         <p>Damage: {{ $player->getStatistics()['damage_min_points'] }} ~ {{ $player->getStatistics()['damage_max_points'] }}</p>
+                        <p>Ability to evade: {{ $player->getStatistics()['dexterity_points'] / 2 }}</p>
+                        <p>Magic resistance: {{ $player->getStatistics()['intelligence_points'] / 2 }}</p>
+                        <p>Hit points: {{ $player->getStatistics()['durability_points'] * 5 * ($player->character->level + 1) }}</p>
+                        <p>Critical chance: {{ $player->getStatistics()['luck_points'] * 5 / ($player->character->level * 2) }}</p>
                     </div>
 
                 </div>

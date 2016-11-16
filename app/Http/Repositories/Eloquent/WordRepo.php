@@ -24,8 +24,6 @@ class WordRepo implements IWordRepo
 
     public function generate($type = null)
     {
-
-        // if quest
         $result =   $this -> model -> where('type', 1) -> orderBy(DB::raw('RAND()')) -> first() -> word . ' ' .
                     $this -> model -> where('type', 2) -> orderBy(DB::raw('RAND()')) -> first() -> word;
 

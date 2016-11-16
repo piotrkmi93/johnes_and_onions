@@ -72,5 +72,10 @@ class QuestRepo implements IQuestRepo
         return $quest -> save() ? $quest : null;
     }
 
+    public function getByPlayerId($player_id)
+    {
+        return $this -> model -> where('player_id', $player_id) -> get();
+    }
+
 
 }
