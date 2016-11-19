@@ -14,6 +14,7 @@ interface ICharacterRepo
 
     public function create($character_look_id, $name);
     public function createMonster($character_look_id, $name, $player);
+    public function update($id, $name);
     public function delete($id);
     public function get($id);
     public function increaseStrength($id);

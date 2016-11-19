@@ -101,3 +101,7 @@ nav{
 .creator-title{
     text-align: center;
 }
+
+.quest .progress {
+    height: 20px;
+}

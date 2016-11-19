@@ -11,6 +11,7 @@ namespace App\Http\Repositories\Eloquent;
 
 use App\Http\Repositories\IUserRepo;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserRepo implements IUserRepo
 {
@@ -32,5 +33,10 @@ class UserRepo implements IUserRepo
     public function delete($id)
     {
         return $this -> model -> find($id) -> delete();
+    }
+
+    public function passwordCorrect($id, $password)
+    {
+        return Hash::check($password, $this -> model -> find($id) -> password);
     }
 }

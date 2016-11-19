@@ -95,4 +95,13 @@ class CharacterRepo implements ICharacterRepo
     {
         return $character -> save() ? $character : null;
     }
+
+    public function update($id, $name)
+    {
+        $character = $this -> model -> find($id);
+        $character -> name = $name;
+        return $this -> save($character);
+    }
+
+
 }
