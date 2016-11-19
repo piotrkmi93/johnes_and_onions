@@ -25,7 +25,7 @@ class CharacterLookRepo implements ICharacterLookRepo
     public function create($body_variant_id, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id)
     {
         $characterLook = $this -> model -> newInstance();
-        return $this -> save($body_variant_id, $characterLook, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id);
+        return $this -> save($characterLook, $body_variant_id, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id);
     }
 
     public function edit($id, $body_variant_id, $hair_variant_id, $eyebrow_variant_id, $eyes_variant_id, $mouth_variant_id, $head_variant_id, $nose_variant_id)

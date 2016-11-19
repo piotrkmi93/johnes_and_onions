@@ -10,9 +10,15 @@
     function createPlayerController($http){
         var self = this;
 
+        self.head = {};
         self.eyebrow = {};
         self.hair = {};
-        self.eyesArray = {};
+        self.eyes = {};
+        self.nose = {};
+
+        self.selectedHeadVariant = 1;
+
+        self.selectedBodyColor = 1;
 
         self.selectedEyebrowVariant = 1;
         self.selectedHairVariant = 1;
@@ -21,6 +27,23 @@
 
         self.selectedEyesVariant = 1;
         self.selectedEyesColor = 1;
+
+        self.selectedNoseVariant = 1;
+
+        self.nextEyebrowVariant = nextEyebrowVariant;
+        self.previousEyebrowVariant = previousEyebrowVariant;
+
+        self.nextHeadVariant = nextHeadVariant;
+        self.previousHeadVariant = previousHeadVariant;
+
+        self.nextEyesVariant = nextEyesVariant;
+        self.previousEyesVariant = previousEyesVariant;
+
+        self.nextNoseVariant = nextNoseVariant;
+        self.previousNoseVariant = previousNoseVariant;
+
+        self.nextBodyColor = nextBodyColor;
+        self.previousBodyColor = previousBodyColor;
 
         self.nextHairColor = nextHairColor;
         self.previousHairColor = previousHairColor;
@@ -33,6 +56,70 @@
         $http.get('/api/player/get_look_variants')
             .then(function(response){return splitVariants(response.data.variants);});
 
+        function nextNoseVariant(){
+            ++self.selectedNoseVariant;
+
+            if (self.selectedNoseVariant === 3)
+                self.selectedNoseVariant = 1;
+
+            setBodyVariants();
+        }
+        function previousNoseVariant(){
+            --self.selectedNoseVariant;
+
+            if (self.selectedNoseVariant === 0)
+                self.selectedNoseVariant = 2;
+
+            setBodyVariants();
+        }
+        function nextHeadVariant(){
+            ++self.selectedHeadVariant;
+
+            if (self.selectedHeadVariant === 3)
+                self.selectedHeadVariant = 1;
+
+            setBodyVariants();
+        }
+        function previousHeadVariant(){
+            --self.selectedHeadVariant;
+
+            if (self.selectedHeadVariant === 0)
+                self.selectedHeadVariant = 2;
+
+            setBodyVariants();
+        }
+        function nextBodyColor(){
+            ++self.selectedBodyColor;
+
+            if (self.selectedBodyColor === 10)
+                self.selectedBodyColor = 1;
+
+            setBodyVariants();
+        }
+        function previousBodyColor(){
+            --self.selectedBodyColor;
+
+            if (self.selectedBodyColor === 0)
+                self.selectedBodyColor = 9;
+
+            setBodyVariants();
+        }
+        function nextEyebrowVariant(){
+            ++self.selectedEyebrowVariant;
+
+            if (self.selectedEyebrowVariant === 3)
+                self.selectedEyebrowVariant = 1;
+
+            setHairVariants();
+        }
+        function previousEyebrowVariant(){
+            --self.selectedEyebrowVariant;
+
+            if (self.selectedEyebrowVariant === 0)
+                self.selectedEyebrowVariant = 2;
+
+            setHairVariants();
+        }
         function nextHairColor(){
             ++self.selectedHairColor;
 
@@ -49,6 +136,22 @@
 
             setHairVariants();
         }
+        function nextEyesVariant(){
+            ++self.selectedEyesVariant;
+
+            if (self.selectedEyesVariant === 3)
+                self.selectedEyesVariant = 1;
+
+            setEyesVariants();
+        }
+        function previousEyesVariant(){
+            --self.selectedEyesVariant;
+
+            if (self.selectedEyesVariant === 0)
+                self.selectedEyesVariant = 1;
+
+            setEyesVariants();
+        }
         function nextEyesColor(){
             ++self.selectedEyesColor;
 
@@ -64,6 +167,11 @@
                 self.selectedEyesColor = 8;
 
             setEyesVariants();
+        }
+
+        function setBodyVariants(){
+            self.selectedHead = self.head[self.selectedHeadVariant].find(variantFinder(self.selectedBodyColor))
+            self.selectedNose = self.nose[self.selectedNoseVariant][0];
         }
 
         function setHairVariants(){
@@ -83,22 +191,22 @@
 
             for(var i = 0; i < types.length; ++i){
                 var type = Object.keys(types[i])[0];
-                if (!types[i][type]) continue;  // TODO Wywalić
+                if (!types[i][type]) continue;
                 var number = types[i][type];
-                self[type] = [];
                 self[type][number] = variants
                     .filter(function(variant){ return getVariantType(variant, type + '_' + number);} )
                     .sort(sortByColor);
-
             }
 
             setDefaults();
         }
 
         function setDefaults(){
+            self.selectedHead = self.head[1][0];
             self.selectedEyebrow = self.eyebrow[1][0];
             self.selectedHair = self.hair[1][0];
             self.selectedEyes = self.eyes[1][0];
+            self.selectedNose = self.nose[1][0];
         }
 
         function reset(){
@@ -126,5 +234,7 @@
             result[array[0]] = array[1];
             return result;
         }
+
+        console.log(self);
     }
 })();
