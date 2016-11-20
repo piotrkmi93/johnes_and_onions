@@ -19,6 +19,9 @@
                     </div>
 
                 </li>
+                <li>
+                    <i class="fa fa-database"></i> {{ getPlayer()->amount_of_gold }} gold
+                </li>
                 @endif
                 <li>
                     <a href="{{ url('/logout') }}"

@@ -20,11 +20,31 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::get('/player/get_look_variants', 'PlayerController@getCharacterLookVariants');
+Route::post('/player/quest/delete', 'QuestController@delete'); // usuwa questy, uruchamiane po odbytej walce w queście
 
-//Route::post('/player/create', 'PlayerController@create');
 Route::post('/player/get', 'PlayerController@get');
-//Route::post('/player/increment', 'PlayerController@increment');
 
-Route::group(['middleware' => 'auth'], function(){
+/**
+ * Inkrementuje podaną cechę gracza
+ *
+ * @param integer user_id
+ * @param string attribute
+ */
+Route::post('/player/increment', 'PlayerController@increment');
 
-});
+/**
+ * Ekwipuje postać w dany przedmiot
+ *
+ * @param integer user_id
+ * @param integer backpack_item_id
+ */
+Route::post('/player/set', 'PlayerController@set');
+
+/**
+ * Ściąga przedmiot z postaci i wkłada go do plecaka
+ *
+ * @param integer user_id
+ * @param integer item_id
+ */
+Route::post('/player/put', 'PlayerController@put');
+

@@ -19,50 +19,50 @@ class Player extends Model
     }
 
     public function weapon(){
-        return $this -> belongsTo(Item::class);
+        return $this -> belongsTo(Item::class) -> with('itemLook');
     }
 
     public function shield(){
-        return $this -> belongsTo(Item::class);
+        return $this -> belongsTo(Item::class) -> with('itemLook');
     }
 
     public function helmet(){
-        return $this -> belongsTo(Item::class);
+        return $this -> belongsTo(Item::class) -> with('itemLook');
     }
 
     public function armor(){
-        return $this -> belongsTo(Item::class);
+        return $this -> belongsTo(Item::class) -> with('itemLook');
     }
 
     public function gloves(){
-        return $this -> belongsTo(Item::class);
+        return $this -> belongsTo(Item::class) -> with('itemLook');
     }
 
     public function belt(){
-        return $this -> belongsTo(Item::class);
+        return $this -> belongsTo(Item::class) -> with('itemLook');
     }
 
     public function boots(){
-        return $this -> belongsTo(Item::class);
+        return $this -> belongsTo(Item::class) -> with('itemLook');
     }
 
     public function necklace(){
-        return $this -> belongsTo(Item::class);
+        return $this -> belongsTo(Item::class) -> with('itemLook');
     }
 
     public function ring(){
-        return $this -> belongsTo(Item::class);
+        return $this -> belongsTo(Item::class) -> with('itemLook');
     }
 
     public function accessory(){
-        return $this -> belongsTo(Item::class);
+        return $this -> belongsTo(Item::class) -> with('itemLook');
     }
 
     public function backpack(){
         return $this -> belongsTo(Backpack::class);
     }
 
-    public function getStatistics(){
+    public function statistics(){
 
         $character = $this -> character;
 
@@ -75,6 +75,7 @@ class Player extends Model
             'armor_points' => 0,
             'damage_min_points' => 0,
             'damage_max_points' => 0,
+            'attack_type' => $this -> weapon -> type == 'sword' ? 'melee' : 'magic',
         );
 
         if( $this->accessory ){
@@ -165,8 +166,8 @@ class Player extends Model
             $statistics['durability_points'] += $this->weapon -> durability_points;
             $statistics['luck_points'] += $this->weapon -> luck_points;
             $statistics['armor_points'] += $this->weapon -> armor_points;
-            $statistics['damage_min_points'] = $this->weapon -> damage_min_points * (1 + $statistics['strength_points'] / 10);
-            $statistics['damage_max_points'] = $this->weapon -> damage_max_points * (1 + $statistics['strength_points'] / 10);
+            $statistics['damage_min_points'] = $this->weapon -> damage_min_points * (1 + ($statistics['attack_type'] == 'melee' ? $statistics['strength_points'] : $statistics['intelligence_points']) / 10);
+            $statistics['damage_max_points'] = $this->weapon -> damage_max_points * (1 + ($statistics['attack_type'] == 'melee' ? $statistics['strength_points'] : $statistics['intelligence_points']) / 10);
         }
 
         return $statistics;

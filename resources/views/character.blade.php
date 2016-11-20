@@ -72,27 +72,25 @@
                 <div class="row">
 
                     <div class="col s6">
-                        <p>Strength points: {{ $player->getStatistics()['strength_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
-                        <p>Dexterity points: {{ $player->getStatistics()['dexterity_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
-                        <p>Intelligence points: {{ $player->getStatistics()['intelligence_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
-                        <p>Durability points: {{ $player->getStatistics()['durability_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
-                        <p>Luck points: {{ $player->getStatistics()['luck_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
+                        <p>Strength points: {{ $player->statistics()['strength_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
+                        <p>Dexterity points: {{ $player->statistics()['dexterity_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
+                        <p>Intelligence points: {{ $player->statistics()['intelligence_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
+                        <p>Durability points: {{ $player->statistics()['durability_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
+                        <p>Luck points: {{ $player->statistics()['luck_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
                     </div>
 
                     <div class="col s6">
-                        <p>Damage: {{ $player->getStatistics()['damage_min_points'] }} ~ {{ $player->getStatistics()['damage_max_points'] }}</p>
-                        <p>Ability to evade: {{ $player->getStatistics()['dexterity_points'] / 2 }}</p>
-                        <p>Magic resistance: {{ $player->getStatistics()['intelligence_points'] / 2 }}</p>
-                        <p>Hit points: {{ $player->getStatistics()['durability_points'] * 5 * ($player->character->level + 1) }}</p>
-                        <p>Critical chance: {{ $player->getStatistics()['luck_points'] * 5 / ($player->character->level * 2) }}</p>
+                        <p>Damage: {{ $player->statistics()['damage_min_points'] }} ~ {{ $player->statistics()['damage_max_points'] }}</p>
+                        <p>Ability to evade: {{ $player->statistics()['dexterity_points'] / ($player->character->level + 1) }}</p>
+                        <p>Magic resistance: {{ $player->statistics()['intelligence_points'] / 2 }}</p>
+                        <p>Hit points: {{ $player->statistics()['durability_points'] * 5 * ($player->character->level + 1) }}</p>
+                        <p>Critical chance: {{ $player->statistics()['luck_points'] * 5 / ($player->character->level * 2) }}</p>
                     </div>
 
                 </div>
 
             </div>
         </div>
-
-
 
     </div>
 

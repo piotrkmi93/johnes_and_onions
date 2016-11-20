@@ -84,10 +84,10 @@ class CharacterRepo implements ICharacterRepo
         return $this -> save($character);
     }
 
-    public function increaseLucky($id)
+    public function increaseLuck($id)
     {
         $character = $this -> get($id);
-        $character -> lucky_points += 1;
+        $character -> luck_points += 1;
         return $this -> save($character);
     }
 
@@ -100,6 +100,13 @@ class CharacterRepo implements ICharacterRepo
     {
         $character = $this -> model -> find($id);
         $character -> name = $name;
+        return $this -> save($character);
+    }
+
+    public function levelUp($id)
+    {
+        $character = $this -> model -> find($id);
+        $character -> level += 1;
         return $this -> save($character);
     }
 

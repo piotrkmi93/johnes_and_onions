@@ -19,9 +19,12 @@
 
 
     <!-- Scripts -->
-    <script src="/js/libraries/linq/linq.js"></script>
-    <script src="/js/libraries/angular/angular.js"></script>
-    <script src="/js/angular/jaoApp.js"></script>
+    <script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('/js/materialize.min.js') }}"></script>
+
+    <script src="{{ asset('/js/libraries/linq/linq.js') }}"></script>
+    <script src="{{ asset('/js/libraries/angular/angular.js') }}"></script>
+    <script src="{{ asset('/js/angular/jaoApp.js') }}"></script>
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -47,9 +50,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script>
+
     <script src="{{ asset('/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-    <script src="{{ asset('/js/materialize.min.js') }}"></script>
+
     <script src="{{ asset('/js/app.js') }}"></script>
 
     <script src="{{ asset('/js/angular/playerModule/jaoApp.player.js') }}"></script>

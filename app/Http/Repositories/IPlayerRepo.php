@@ -30,5 +30,6 @@ interface IPlayerRepo
     public function delete($id);
     public function get($id);
     public function getByUserID($user_id);
+    public function levelUp($id);
 
 }

@@ -18,4 +18,5 @@ interface IQuestRepo
     public function get($id);
     public function start($id);
     public function getByPlayerId($player_id);
+    public function takeItem($id);
 }

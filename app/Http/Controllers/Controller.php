@@ -16,23 +16,4 @@ class Controller extends BaseController
     {
         return Auth::user();
     }
-
-    protected function randomItemType()
-    {
-        $types = [
-            'sword',
-            'wand',
-            'shield',
-            'helmet',
-            'armor',
-            'gloves',
-            'belt',
-            'boots',
-            'necklace',
-            'ring',
-            'accessory',
-        ];
-
-        return $types[rand(0, count($types)-1)];
-    }
 }

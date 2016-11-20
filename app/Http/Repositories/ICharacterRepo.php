@@ -21,6 +21,7 @@ interface ICharacterRepo
     public function increaseDexterity($id);
     public function increaseIntelligence($id);
     public function increaseDurability($id);
-    public function increaseLucky($id);
+    public function increaseLuck($id);
+    public function levelUp($id);
 
 }
