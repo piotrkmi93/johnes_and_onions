@@ -24,8 +24,12 @@ Route::group(['middleware' => 'auth'], function(){
 
     // TODO make middleware for playables
     Route::get('/character', 'PlayerController@character') -> name('player.character');
-    Route::get('/pub', 'QuestController@index') -> name('player.pub');
+    Route::get('/pub/{quest?}', 'QuestController@index') -> name('player.pub');
     Route::get('/options', 'OptionsController@index') -> name('player.options');
+
+    Route::post('/options/password', 'OptionsController@password') -> name('player.options.password');
+    Route::post('/options/name', 'OptionsController@name') -> name('player.options.name');
+    Route::post('/options/description', 'OptionsController@description') -> name('player.options.description');
 
 });
 

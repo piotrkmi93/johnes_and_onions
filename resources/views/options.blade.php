@@ -11,9 +11,19 @@
             <div class="col s6">
 
                 <div class="card-panel">
-                    <h5>Change password</h5>
+                    <h5><i class="fa fa-key" aria-hidden="true"></i> Change password</h5>
 
-                    <form>
+                    <form method="POST" action="{{ route('player.options.password') }}">
+
+                        @if(isset($p_success) && isset($p_info))
+                            @if($p_success)
+                                <div class="card-panel teal lighten-2"><i class="fa fa-check" aria-hidden="true"></i> {{ $p_info }}</div>
+                            @else
+                                <div class="card-panel red lighten-1"><i class="fa fa-times" aria-hidden="true"></i> {{ $p_info }}</div>
+                            @endif
+                        @endif
+
+                        {{ csrf_field() }}
 
                         <div class="input-field">
                             <input type="password" name="current_password" id="current_password" class="validate" required>
@@ -30,7 +40,7 @@
                             <label for="confirm_password">Confirm new password</label>
                         </div>
 
-                        <button type="submit" class="btn waves-effect">Confirm</button>
+                        <button type="submit" class="btn waves-effect"><i class="fa fa-check" aria-hidden="true"></i> Confirm</button>
 
                     </form>
                 </div>
@@ -40,21 +50,64 @@
             <div class="col s6">
 
                 <div class="card-panel">
-                    <h5>Change character name</h5>
+                    <h5><i class="fa fa-id-card-o" aria-hidden="true"></i> Change character name</h5>
 
-                    <form>
+                    <form method="post" action="{{ route('player.options.name') }}">
+
+                        @if(isset($n_success) && isset($n_info))
+                            @if($n_success)
+                                <div class="card-panel teal lighten-2"><i class="fa fa-check" aria-hidden="true"></i> {{ $n_info }}</div>
+                            @else
+                                <div class="card-panel red lighten-1"><i class="fa fa-times" aria-hidden="true"></i> {{ $n_info }}</div>
+                            @endif
+                        @endif
+
+                        {{ csrf_field() }}
 
                         <div class="input-field">
                             <input type="text" maxlength="24" name="name" id="name" class="validate" required>
                             <label for="name">{{ getPlayer()->character->name }}</label>
                         </div>
 
-                        <button type="submit" class="btn waves-effect">Confirm</button>
+                        <button type="submit" class="btn waves-effect"><i class="fa fa-check" aria-hidden="true"></i> Confirm</button>
 
                     </form>
                 </div>
 
             </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col s12">
+
+                <div class="card-panel">
+                    <h5><i class="fa fa-info" aria-hidden="true"></i> Change description</h5>
+
+                    <form method="post" action="{{ route('player.options.description') }}">
+
+                        @if(isset($d_success) && isset($d_info))
+                            @if($d_success)
+                                <div class="card-panel teal lighten-2"><i class="fa fa-check" aria-hidden="true"></i> {{ $d_info }}</div>
+                            @else
+                                <div class="card-panel red lighten-1"><i class="fa fa-times" aria-hidden="true"></i> {{ $d_info }}</div>
+                            @endif
+                        @endif
+
+                        {{ csrf_field() }}
+
+                        <div class="input-field">
+                            <textarea maxlength="255" name="description" id="description" class="validate materialize-textarea" required>{{ getPlayer()->description }}</textarea>
+                            <label for="textarea1">Description</label>
+                        </div>
+
+                        <button type="submit" class="btn waves-effect"><i class="fa fa-check" aria-hidden="true"></i> Confirm</button>
+
+                    </form>
+                </div>
+
+            </div>
+
         </div>
 
 

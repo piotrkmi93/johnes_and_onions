@@ -50,10 +50,16 @@ class QuestController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param null $quest
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function index()
+    public function index($quest = null)
     {
+        if( isset($quest) )
+        {
+            return $this -> start($quest);
+        }
+
         $player = $this -> playerRepo -> getByUserID($this -> user() -> id);
 
         $quests = $this -> questRepo -> getByPlayerId($player -> id);
@@ -73,18 +79,19 @@ class QuestController extends Controller
 
             foreach ($quests as $quest)
             {
-                if($quest -> end_time)
+                if( isset($quest -> end_date ))
                 {
-                    if(Carbon::now() >= $quest -> end_time)
+                    if(Carbon::now() >= $quest -> end_date)
                     {
-                        dd('fight!');
-                        // TODO: fight
+                        $this -> fight($player, $quest);
 
                         // TODO: delete quests, monsters, characters and items after fight
                     }
                     else
                     {
-                        return view('quest', compact('quest'));
+                        $start_date = Carbon::createFromFormat('Y-m-d H:i:s', $quest -> end_date) -> subSeconds($quest -> duration);
+
+                        return view('quest', compact('quest', 'start_date'));
                     }
                 }
             }
@@ -95,13 +102,12 @@ class QuestController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param $quest_id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function start(Request $request)
+    public function start($quest_id)
     {
-        $id = $request -> id;
-        $quest = $this -> questRepo -> start($id);
+        $this -> questRepo -> start($quest_id);
         return redirect() -> route('player.pub');
     }
 
@@ -152,5 +158,12 @@ class QuestController extends Controller
         $quest = $this -> questRepo -> create($player, $this -> wordRepo -> generate(null), $item, $monster->id);
 
         return $quest;
+    }
+
+    private function fight($player, $quest)
+    {
+        dd($quest);
+
+        // TODO: walka między naszą postacią a potworem, pętla dopóki oboje mają więcej niż 0 pkt życia. Ciosy zadawane na zmianę, wartość ciosów zależna od atrybutów postaci, należy uwzględnić siłę, obronę, obronę magiczną, prawdopodobieństwo uniku itd
     }
 }

@@ -14,5 +14,6 @@ interface IUserRepo
 
     public function update($id, $password);
     public function delete($id);
+    public function passwordCorrect($id, $password);
 
 }

@@ -63,7 +63,7 @@ class QuestRepo implements IQuestRepo
 
     public function get($id)
     {
-        return $this -> model -> with('itemReward') -> find($id);
+        return $this -> model -> with('itemReward') -> with('monster') -> find($id);
     }
 
     public function start($id)
@@ -75,7 +75,7 @@ class QuestRepo implements IQuestRepo
 
     public function getByPlayerId($player_id)
     {
-        return $this -> model -> where('player_id', $player_id) -> with('itemReward') -> get();
+        return $this -> model -> where('player_id', $player_id) -> with('itemReward') -> with('monster') -> get();
     }
 
 

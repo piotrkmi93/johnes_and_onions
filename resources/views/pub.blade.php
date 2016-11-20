@@ -29,6 +29,7 @@
                                     <div class="col s6">
                                         <strong>{{ $quest -> itemReward -> name }}</strong>
                                         <ul>
+                                            <li>Type: {{ $quest -> itemReward -> type }}</li>
                                             @if($quest->itemReward->armor_points)<li>Armor points: {{ $quest->itemReward->armor_points }}</li>@endif
                                             @if($quest->itemReward->strength_points)<li>Strength points: {{ $quest->itemReward->strength_points }}</li>@endif
                                             @if($quest->itemReward->dexterity_points)<li>Dexterity points: {{ $quest->itemReward->dexterity_points }}</li>@endif
@@ -43,7 +44,7 @@
                             </div>
                         @endif
 
-                        <a href="#" class="waves-effect waves-light btn btn-lg"><i class="fa fa-plane" aria-hidden="true"></i> <strong>Go!</strong></a>
+                        <a href="{{ route('player.pub', ['quest' => $quest -> id]) }}" class="waves-effect waves-light btn btn-lg"><i class="fa fa-plane" aria-hidden="true"></i> <strong>Go!</strong></a>
                     </div>
                 </div>
 
