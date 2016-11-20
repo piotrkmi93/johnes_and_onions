@@ -34,7 +34,7 @@ class BackpackRepo implements IBackpackRepo
 
     public function get($id)
     {
-        return $this -> model -> find($id);
+        return $this -> model -> with('items') -> find($id);
     }
 
 

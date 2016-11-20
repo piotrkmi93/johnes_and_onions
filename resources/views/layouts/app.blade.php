@@ -16,6 +16,8 @@
     <link href="{{ asset('/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/jquery.mCustomScrollbar.css') }}" rel="stylesheet">
 
+    <script src="{{ asset('/js/libraries/jQuery/jquery-3.1.1.js') }}"></script>
+
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -46,7 +48,6 @@
 
     <script src="{{ asset('/js/libraries/linq/linq.js') }}"></script>
 
-    <script src="{{ asset('/js/libraries/jQuery/jquery-3.1.1.js') }}"></script>
     <script src="{{ asset('/js/libraries/jQuery/jquery-ui.js') }}"></script>
 
     <script src="{{ asset('/js/materialize.min.js') }}"></script>

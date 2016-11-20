@@ -59,7 +59,7 @@ class Player extends Model
     }
 
     public function backpack(){
-        return $this -> belongsTo(Backpack::class);
+        return $this -> belongsTo(Backpack::class) -> with('items');
     }
 
     public function statistics(){

@@ -192,11 +192,6 @@ class QuestController extends FightController
         ]);
     }
 
-//    public function getFight()
-//    {
-//        return response() -> ;
-//    }
-
     /**
      * @param Player $player
      * @param Quest $quest
