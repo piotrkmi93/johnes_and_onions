@@ -305,7 +305,10 @@
                         <p>Hit points: {{ $player->getStatistics()['durability_points'] * 5 * ($player->character->level + 1) }}</p>
                         <p>Critical chance: {{ $player->getStatistics()['luck_points'] * 5 / ($player->character->level * 2) }}</p>
                         <p>Gold: {{ $player->getStatistics()['luck_points'] * 5 / ($player->character->level * 2) }}</p>
+<<<<<<< HEAD
 >>>>>>> 68277ff0bbb3ff8a6d16f65a9b60a876905b6952
+=======
+>>>>>>> origin/master
                     </div>
 
                 </div>
@@ -313,8 +316,11 @@
             </div>
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 68277ff0bbb3ff8a6d16f65a9b60a876905b6952
+=======
+>>>>>>> origin/master
     </div>
 @endsection
