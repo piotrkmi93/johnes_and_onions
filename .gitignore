@@ -7,3 +7,7 @@ Homestead.json
 Homestead.yaml
 .env
 .orig
+resources/views/layouts/app.blade_BACKUP_11312.php
+resources/views/layouts/app.blade_BASE_11312.php
+resources/views/layouts/app.blade_LOCAL_11312.php
+resources/views/layouts/app.blade_REMOTE_11312.php
