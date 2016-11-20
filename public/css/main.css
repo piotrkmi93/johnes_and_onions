@@ -49,6 +49,7 @@ body, #app, #app>.row{
     border: 5px solid black;
 
     text-wrap: normal;
+    vertical-align: top;
 }
 
 .character-box{

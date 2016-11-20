@@ -3,6 +3,8 @@
  */
 (function(){
     angular.module('jaoApp', [
+        'ngDragDrop',
+
         'jaoApp.player'
     ]).config(setInterpolation);
 
