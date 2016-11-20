@@ -5,14 +5,14 @@
 (function(){
     angular
         .module('jaoApp.player')
-        .controller('playerDetailsController', ['$http', playerDetailsController]);
+        .controller('playerDetailsController', ['$scope', '$http', playerDetailsController]);
 
-    function playerDetailsController($http){
+    function playerDetailsController($scope, $http){
         var self = this;
 
         self.backpack = {
             1: {
-                type: "shield",
+                type: "helmet",
                 item_look: {
                     image_url: "images/items/example_item.png"
                 }
@@ -25,7 +25,7 @@
             }
         };
 
-        // self.canDropItem = canDropItem;
+        self.userId = null;
         self.canDropItem = canDropItem;
         self.dragStart = dragStart;
 
@@ -41,6 +41,15 @@
             self.itemDragged = null;
             return Promise.reject();
         }
+
+        $scope.$watch(function(){ return self.userId }, function (newValue) {
+            $http.post('/api/player/get', {id: newValue})
+                .then(function(response){
+                    console.log(response.data);
+                });
+        })
+
+
         console.log(self);
     }
 })();

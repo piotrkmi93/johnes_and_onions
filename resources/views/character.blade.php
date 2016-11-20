@@ -5,7 +5,7 @@
     <div class="card-panel" ng-controller="playerDetailsController as player">
         <h4>Character</h4>
 
-        <div class="row">
+        <div class="row" ng-init="player.userId={{ $player -> id }}">
             <div class="col s6">
 
                 <div class="col s2">
@@ -15,19 +15,19 @@
                              data-drop=true
                              jqyoui-options="{revertDuration: 1000}"
                              jqyoui-droppable="{
-                                beforeDrop: 'player.canDropItem(\'sword\')'
+                                beforeDrop: 'player.canDropItem(\'helmet\')'
                              }"
-                             ng-model="player.sword">
+                             ng-model="player.helmet">
                             <div data-drag="true"
                                  jqyoui-draggable="{
                                     animate:true,
-                                    onStart:'player.dragStart(player.sword)'
+                                    onStart:'player.dragStart(player.helmet)'
                                  }"
                                  data-jqyoui-options="{revert: 'invalid'}"
-                                 ng-model="player.sword">
-                                <img src="//player.sword.item_look.image_url//">
+                                 ng-model="player.helmet">
+                                <img src="//player.helmet.item_look.image_url//">
                             </div>
-                            <span ng-if="!player.sword">sword</span>
+                            <span ng-if="!player.helmet">helmet</span>
                         </div>
                     </div>
                     <div class="row">
@@ -297,15 +297,12 @@
                         <p>Magic resistance: {{ $player->getStatistics()['intelligence_points'] / 2 }}</p>
                         <p>Hit points: {{ $player->getStatistics()['durability_points'] * 5 * ($player->character->level + 1) }}</p>
                         <p>Critical chance: {{ $player->getStatistics()['luck_points'] * 5 / ($player->character->level * 2) }}</p>
+                        <p>Gold: {{ $player->getStatistics()['luck_points'] * 5 / ($player->character->level * 2) }}</p>
                     </div>
 
                 </div>
 
             </div>
         </div>
-
-
-
     </div>
-
 @endsection
