@@ -122,3 +122,22 @@ nav ul li {
 .versus{
     margin-top: 30vh;
 }
+
+.item-box{
+    position: relative;
+}
+
+.item-box-info{
+    background-color: #00b0ff;
+    border: 1px solid black;
+    padding:10px;
+    display: none;
+    position: absolute;
+    left: -50%;
+    bottom: -50%;
+    z-index: 99999;
+}
+
+.item-box:hover > .item-box-info{
+    display: block;
+}

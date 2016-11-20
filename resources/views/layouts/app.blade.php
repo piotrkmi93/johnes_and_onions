@@ -12,25 +12,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('/css/materialize.min.css') }}" rel="stylesheet">
-    {{--<link href="/css/app.css" rel="stylesheet">--}}
     <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/jquery.mCustomScrollbar.css') }}" rel="stylesheet">
 
-
-    <!-- Scripts -->
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <script src="{{ asset('/js/jquery-3.1.1.min.js') }}"></script>
-    <script src="{{ asset('/js/materialize.min.js') }}"></script>
-
-    <script src="{{ asset('/js/libraries/linq/linq.js') }}"></script>
-    <script src="{{ asset('/js/libraries/angular/angular.js') }}"></script>
-    <script src="{{ asset('/js/angular/jaoApp.js') }}"></script>
-=======
->>>>>>> 68277ff0bbb3ff8a6d16f65a9b60a876905b6952
-=======
->>>>>>> origin/master
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -56,15 +41,7 @@
     </div>
 
     <!-- Scripts -->
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-    <script src="{{ asset('/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-
-=======
->>>>>>> 68277ff0bbb3ff8a6d16f65a9b60a876905b6952
-=======
->>>>>>> origin/master
     <script src="{{ asset('/js/app.js') }}"></script>
 
     <script src="{{ asset('/js/libraries/linq/linq.js') }}"></script>
