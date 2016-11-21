@@ -79,7 +79,7 @@
 
                     {{-- TODO --}}
                     {{--{{ route('player.options.delete') }}--}}
-                    <form method="post" action="#">
+                    <form method="post" action="{{ route('player.options.delete') }}">
 
                         {{ csrf_field() }}
                         <button type="submit" class="btn red waves-effect"><i class="fa fa-trash" aria-hidden="true"></i> Delete all data</button>

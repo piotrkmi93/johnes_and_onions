@@ -65,6 +65,10 @@ class QuestController extends FightController
      */
     public function index($quest = null)
     {
+        if($this -> is_busy() && $this -> is_busy() == 'w')
+        {
+            return redirect() -> route('player.work');
+        }
 
         if( isset($quest) )
         {
@@ -117,6 +121,7 @@ class QuestController extends FightController
     public function start($quest_id)
     {
         $this -> questRepo -> start($quest_id);
+        $this -> busy('q');
         return redirect() -> route('player.pub');
     }
 
@@ -183,6 +188,7 @@ class QuestController extends FightController
         {
             $this -> reward($player, $quest);
         }
+        $this -> busy('f');
 
         return view('fight', [
             'player_1' => $player,
@@ -203,14 +209,13 @@ class QuestController extends FightController
         $character = $this -> characterRepo -> get($player -> character_id);
         $experience_from_quest = $quest->experience_points_reward;
 
-        do
+        while( ($player -> required_experience_points - $player -> experience_points) < $experience_from_quest)
         {
             $experience_from_quest -= ($player -> required_experience_points - $player -> experience_points);
 
             $player = $this -> playerRepo -> levelUp($player -> id);
             $character = $this -> characterRepo -> levelUp($character -> id);
         }
-        while( ($player -> required_experience_points - $player -> experience_points) < $experience_from_quest);
 
         $this -> playerRepo -> addExperience($player->id, $quest->experience_points_reward);
 
@@ -244,6 +249,32 @@ class QuestController extends FightController
 
             $this -> questRepo -> delete($quest -> id);
         }
+    }
+
+    public function cancel()
+    {
+        $quests = $this -> questRepo -> getByPlayerId($this -> playerRepo -> getByUserID($this -> user() -> id) -> id);
+
+        foreach($quests as $quest){
+            $monster = $this -> monsterRepo -> get($quest -> monster_id);
+            $monsterCharacter = $this -> characterRepo -> get($monster -> character_id);
+            $monsterCharacterLook = $this -> characterLookRepo -> get($monsterCharacter -> character_look_id);
+
+            $this -> characterLookRepo -> delete($monsterCharacterLook -> id);
+            $this -> characterRepo -> delete($monsterCharacter -> id);
+            $this -> monsterRepo -> delete($monster -> id);
+
+            if($quest -> item_reward_id)
+            {
+                $this -> itemRepo -> delete($quest -> item_reward_id);
+            }
+
+            $this -> questRepo -> delete($quest -> id);
+        }
+
+        $this -> busy('f');
+
+        return redirect() -> route('player.pub');
     }
 
     /**

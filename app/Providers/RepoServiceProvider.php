@@ -15,6 +15,7 @@ use App\Http\Repositories\Eloquent\PlayerRepo;
 use App\Http\Repositories\Eloquent\QuestRepo;
 use App\Http\Repositories\Eloquent\UserRepo;
 use App\Http\Repositories\Eloquent\WordRepo;
+use App\Http\Repositories\Eloquent\WorkRepo;
 use App\Http\Repositories\IBackpackItemRepo;
 use App\Http\Repositories\IBackpackRepo;
 use App\Http\Repositories\ICharacterLookRepo;
@@ -28,6 +29,7 @@ use App\Http\Repositories\IPlayerRepo;
 use App\Http\Repositories\IQuestRepo;
 use App\Http\Repositories\IUserRepo;
 use App\Http\Repositories\IWordRepo;
+use App\Http\Repositories\IWorkRepo;
 use Illuminate\Support\ServiceProvider;
 
 class RepoServiceProvider extends ServiceProvider
@@ -62,5 +64,6 @@ class RepoServiceProvider extends ServiceProvider
         $this -> app -> singleton(IMonsterRepo::class, MonsterRepo::class);
         $this -> app -> singleton(IWordRepo::class, WordRepo::class);
         $this -> app -> singleton(IItemLookRepo::class, ItemLookRepo::class);
+        $this -> app -> singleton(IWorkRepo::class, WorkRepo::class);
     }
 }

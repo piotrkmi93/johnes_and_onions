@@ -46,12 +46,6 @@ class PlayerRepo implements IPlayerRepo
 
         if($player -> experience_points >= $player -> required_experience_points) {
             $player -> experience_points += $experience_points;
-
-//            while ($player -> required_experience_points < $player -> experience_points)
-//            {
-//                $this -> incrementLevel($player);
-//
-//            }
         }
 
         return $this -> save($player);
@@ -195,6 +189,55 @@ class PlayerRepo implements IPlayerRepo
         $player -> required_experience_points *= 1.19;
         $player -> experience_points = 0;
         return $this -> save($player);
+    }
+
+    public function ranking()
+    {
+        return $this -> model
+            -> with('character')
+            -> with('user')
+            -> with('weapon')
+            -> with('shield')
+            -> with('helmet')
+            -> with('armor')
+            -> with('gloves')
+            -> with('belt')
+            -> with('boots')
+            -> with('necklace')
+            -> with('ring')
+            -> with('accessory')
+            -> with('backpack')
+            -> orderBy('glory_points', 'desc')
+            -> get();
+    }
+
+    public function nextInRanking($id)
+    {
+        return $this -> model
+            -> with('character')
+            -> with('user')
+            -> with('weapon')
+            -> with('shield')
+            -> with('helmet')
+            -> with('armor')
+            -> with('gloves')
+            -> with('belt')
+            -> with('boots')
+            -> with('necklace')
+            -> with('ring')
+            -> with('accessory')
+            -> with('backpack')
+            -> orderBy('glory_points', 'desc')
+            -> where('glory_points', '>=', $this -> get($id) -> glory_points)
+            -> where('id', '<>', $id)
+            -> first();
+    }
+
+    public function busy($id, $busy)
+    {
+        $player = $this -> model -> find($id);
+        $player -> busy = $busy;
+        return $player -> save() ? $player : null;
     }
 
 
