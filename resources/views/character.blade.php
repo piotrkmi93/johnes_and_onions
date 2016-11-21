@@ -284,11 +284,11 @@
                 <div class="row">
 
                     <div class="col s6">
-                        <p>Strength points: {{ $player->getStatistics()['strength_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
-                        <p>Dexterity points: {{ $player->getStatistics()['dexterity_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
-                        <p>Intelligence points: {{ $player->getStatistics()['intelligence_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
-                        <p>Durability points: {{ $player->getStatistics()['durability_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
-                        <p>Luck points: {{ $player->getStatistics()['luck_points'] }} <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
+                        <p>Strength points: //player.strength_points// <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
+                        <p>Dexterity points: //player.dexterity_points// <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
+                        <p>Intelligence points: //player.intelligence_points// <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
+                        <p>Durability points: //player.durability_points// <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
+                        <p>Luck points: //player.luck_points// <button class="waves-effect waves-light btn"><i class="fa fa-plus"></i></button></p>
                     </div>
 
                     <div class="col s6">

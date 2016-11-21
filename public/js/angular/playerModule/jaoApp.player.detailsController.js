@@ -46,6 +46,11 @@
             $http.post('/api/player/get', {id: newValue})
                 .then(function(response){
                     console.log(response.data);
+                    self.strength_points = response.data.player.character.strength_points;
+                    self.dexterity_points = response.data.player.character.dexterity_points;
+                    self.intelligence_points = response.data.player.character.intelligence_points;
+                    self.durability_points = response.data.player.character.durability_points;
+                    self.luck_points = response.data.player.character.luck_points;
                 });
         })
 
