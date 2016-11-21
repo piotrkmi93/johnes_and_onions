@@ -82,8 +82,8 @@ nav{
 .character-box > img {
     position: absolute;
     width:100%;
-    top: 50%;
-    transform: translateY(-50%);
+    /*top: 50%;*/
+    /*transform: translateY(-50%);*/
 }
 
 .character-box-info{
@@ -105,4 +105,39 @@ nav{
 
 .quest .progress {
     height: 20px;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.opponent-character-box img{
+    transform: scaleX(-1);
+}
+
+.versus{
+    margin-top: 30vh;
+}
+
+.item-box{
+    position: relative;
+}
+
+.item-box-info{
+    background-color: #00b0ff;
+    border: 1px solid black;
+    padding:10px;
+    display: none;
+    position: absolute;
+    left: -50%;
+    bottom: -50%;
+    z-index: 99999;
+}
+
+.item-box:hover > .item-box-info{
+    display: block;
 }

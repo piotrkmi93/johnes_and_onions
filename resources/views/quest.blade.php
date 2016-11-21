@@ -14,25 +14,26 @@
 
     <script>
 
-        var end_date = new Date('{{ $quest -> end_date }}');
-        var start_date = new Date('{{ $start_date }}');
+        $(document).ready(function () {
+            var end_date = new Date('{{ $quest -> end_date }}');
+            var start_date = new Date('{{ $start_date }}');
 
-        interval = setInterval(function(){
+            interval = setInterval(function () {
 
-            var now = new Date();
-            var time_left = new Date(end_date - start_date - (now - start_date));
-            $('#time-left').text(time_left.getUTCMinutes() + ':' + (time_left.getUTCSeconds() < 10 ? '0' : '') + time_left.getUTCSeconds());
-            $('.quest-process').css('width', ( ((now - start_date) * 100 ) / (end_date - start_date)) + '%');
+                var now = new Date();
+                var time_left = new Date(end_date - start_date - (now - start_date));
+                $('#time-left').text(time_left.getUTCMinutes() + ':' + (time_left.getUTCSeconds() < 10 ? '0' : '') + time_left.getUTCSeconds());
+                $('.quest-process').css('width', ( ((now - start_date) * 100 ) / (end_date - start_date)) + '%');
 
-            console.log(time_left < 0);
+                console.log(time_left < 0);
 
-            if(time_left < 0)
-            {
-                clearInterval(interval);
-                window.location.reload(true);
-            }
+                if (time_left < 0) {
+                    clearInterval(interval);
+                    window.location.reload(true);
+                }
 
-        }, 1000);
+            }, 100);
+        });
 
     </script>
 

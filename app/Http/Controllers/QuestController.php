@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Repositories\IBackpackItemRepo;
+use App\Http\Repositories\IBackpackRepo;
 use App\Http\Repositories\ICharacterLookRepo;
 use App\Http\Repositories\ICharacterLookVariantRepo;
 use App\Http\Repositories\ICharacterRepo;
@@ -11,12 +13,15 @@ use App\Http\Repositories\IMonsterRepo;
 use App\Http\Repositories\IPlayerRepo;
 use App\Http\Repositories\IQuestRepo;
 use App\Http\Repositories\IWordRepo;
+use App\Monster;
+use App\Player;
+use App\Quest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class QuestController extends Controller
+class QuestController extends FightController
 {
     private $questRepo,
             $playerRepo,
@@ -26,7 +31,8 @@ class QuestController extends Controller
             $characterRepo,
             $wordRepo,
             $itemRepo,
-            $itemLookRepo;
+            $itemLookRepo,
+            $backpackItemRepo;
 
     public function __construct(IQuestRepo $questRepo,
                                 IPlayerRepo $playerRepo,
@@ -36,7 +42,8 @@ class QuestController extends Controller
                                 ICharacterRepo $characterRepo,
                                 IWordRepo $wordRepo,
                                 IItemRepo $itemRepo,
-                                IItemLookRepo $itemLookRepo)
+                                IItemLookRepo $itemLookRepo,
+                                IBackpackItemRepo $backpackItemRepo)
     {
         $this -> questRepo = $questRepo;
         $this -> playerRepo = $playerRepo;
@@ -47,14 +54,18 @@ class QuestController extends Controller
         $this -> wordRepo = $wordRepo;
         $this -> itemRepo = $itemRepo;
         $this -> itemLookRepo = $itemLookRepo;
+        $this -> backpackItemRepo = $backpackItemRepo;
+
+        $this -> steps = null;
     }
 
     /**
-     * @param null $quest
+     * @param Quest|null $quest
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function index($quest = null)
     {
+
         if( isset($quest) )
         {
             return $this -> start($quest);
@@ -83,9 +94,7 @@ class QuestController extends Controller
                 {
                     if(Carbon::now() >= $quest -> end_date)
                     {
-                        $this -> fight($player, $quest);
-
-                        // TODO: delete quests, monsters, characters and items after fight
+                        return $this -> fight($player, $quest);
                     }
                     else
                     {
@@ -112,10 +121,10 @@ class QuestController extends Controller
     }
 
     /**
-     * @param $player
+     * @param Player $player
      * @return mixed
      */
-    private function create($player)
+    private function create(Player $player)
     {
         $characterLook = $this -> characterLookRepo -> create(
             $this -> characterLookVariantRepo -> getRandom('body') -> id,
@@ -160,10 +169,102 @@ class QuestController extends Controller
         return $quest;
     }
 
-    private function fight($player, $quest)
+    /**
+     * @param Player $player
+     * @param Quest $quest
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    private function fight(Player $player, Quest $quest)
     {
-        dd($quest);
+        $winner = false;
+        $steps = $this -> duel($player, $quest -> monster, $winner);
 
-        // TODO: walka między naszą postacią a potworem, pętla dopóki oboje mają więcej niż 0 pkt życia. Ciosy zadawane na zmianę, wartość ciosów zależna od atrybutów postaci, należy uwzględnić siłę, obronę, obronę magiczną, prawdopodobieństwo uniku itd
+        if($winner)
+        {
+            $this -> reward($player, $quest);
+        }
+
+        return view('fight', [
+            'player_1' => $player,
+            'player_2' => $quest -> monster,
+            'steps' => json_encode($steps),
+            'quest' => true,
+        ]);
+    }
+
+    /**
+     * @param Player $player
+     * @param Quest $quest
+     */
+    private function reward(Player $player, Quest &$quest)
+    {
+        $this -> playerRepo -> addGold($player->id, $quest->amount_of_gold_reward);
+
+        $character = $this -> characterRepo -> get($player -> character_id);
+        $experience_from_quest = $quest->experience_points_reward;
+
+        do
+        {
+            $experience_from_quest -= ($player -> required_experience_points - $player -> experience_points);
+
+            $player = $this -> playerRepo -> levelUp($player -> id);
+            $character = $this -> characterRepo -> levelUp($character -> id);
+        }
+        while( ($player -> required_experience_points - $player -> experience_points) < $experience_from_quest);
+
+        $this -> playerRepo -> addExperience($player->id, $quest->experience_points_reward);
+
+        if(isset($quest -> item_reward_id) && $this -> backpackItemRepo -> countByBackpackID($player -> backpack -> id) < $player -> backpack -> capacity){
+            $this -> backpackItemRepo -> create($player -> backpack -> id, $quest -> item_reward_id);
+            $quest = $this -> questRepo -> takeItem($quest -> id);
+        }
+    }
+
+    /**
+     *
+     */
+    public function delete(Request $request)
+    {
+        $player = $this -> playerRepo -> getByUserID($request -> user_id);
+        $quests = $this -> questRepo -> getByPlayerId($player -> id);
+
+        foreach($quests as $quest){
+            $monster = $this -> monsterRepo -> get($quest -> monster_id);
+            $monsterCharacter = $this -> characterRepo -> get($monster -> character_id);
+            $monsterCharacterLook = $this -> characterLookRepo -> get($monsterCharacter -> character_look_id);
+
+            $this -> characterLookRepo -> delete($monsterCharacterLook -> id);
+            $this -> characterRepo -> delete($monsterCharacter -> id);
+            $this -> monsterRepo -> delete($monster -> id);
+
+            if($quest -> item_reward_id)
+            {
+                $this -> itemRepo -> delete($quest -> item_reward_id);
+            }
+
+            $this -> questRepo -> delete($quest -> id);
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    private function randomItemType()
+    {
+        $types = [
+            'sword',
+            'wand',
+            'shield',
+            'helmet',
+            'armor',
+            'gloves',
+            'belt',
+            'boots',
+            'necklace',
+            'ring',
+            'accessory',
+        ];
+
+        return $types[rand(0, count($types)-1)];
     }
 }

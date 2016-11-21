@@ -185,14 +185,16 @@ class PlayerRepo implements IPlayerRepo
             -> first();
     }
 
-//    private function incrementLevel(&$player)
-//    {
-//        $player -> level += 1;
-//        $player -> required_experience_points += (integer)($player -> required_experience_points * 1.11);
-//    }
-
     private function save(&$player){
         return $player -> save() ? $this -> get($player->id) : null;
+    }
+
+    public function levelUp($id)
+    {
+        $player = $this -> model -> find($id);
+        $player -> required_experience_points *= 1.19;
+        $player -> experience_points = 0;
+        return $this -> save($player);
     }
 
 

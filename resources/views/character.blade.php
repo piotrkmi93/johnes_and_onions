@@ -260,6 +260,9 @@
                              data-jqyoui-options="{revert: 'invalid'}"
                              ng-model="player.backpack[index]">
                             <img src="//player.backpack[index].item_look.image_url//"></div>
+                        <div class="item-box-info">
+                            <p>Info</p>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -292,12 +295,12 @@
                     </div>
 
                     <div class="col s6">
-                        <p>Damage: {{ $player->getStatistics()['damage_min_points'] }} ~ {{ $player->getStatistics()['damage_max_points'] }}</p>
-                        <p>Ability to evade: {{ $player->getStatistics()['dexterity_points'] / 2 }}</p>
-                        <p>Magic resistance: {{ $player->getStatistics()['intelligence_points'] / 2 }}</p>
-                        <p>Hit points: {{ $player->getStatistics()['durability_points'] * 5 * ($player->character->level + 1) }}</p>
-                        <p>Critical chance: {{ $player->getStatistics()['luck_points'] * 5 / ($player->character->level * 2) }}</p>
-                        <p>Gold: {{ $player->getStatistics()['luck_points'] * 5 / ($player->character->level * 2) }}</p>
+                        <p>Damage: {{ $player->statistics()['damage_min_points'] }} ~ {{ $player->getStatistics()['damage_max_points'] }}</p>
+                        <p>Ability to evade: {{ $player->statistics()['dexterity_points'] / 2 }}</p>
+                        <p>Magic resistance: {{ $player->statistics()['intelligence_points'] / 2 }}</p>
+                        <p>Hit points: {{ $player->statistics()['durability_points'] * 5 * ($player->character->level + 1) }}</p>
+                        <p>Critical chance: {{ $player->statistics()['luck_points'] * 5 / ($player->character->level * 2) }}</p>
+                        <p>Gold: {{ $player->statistics()['luck_points'] * 5 / ($player->character->level * 2) }}</p>
                     </div>
 
                 </div>

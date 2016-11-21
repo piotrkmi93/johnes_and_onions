@@ -15,4 +15,5 @@ interface IBackpackItemRepo
     public function delete($id);
     public function get($id);
     public function getByBackpackID($backpack_id);
+    public function countByBackpackID($backpack_id);
 }

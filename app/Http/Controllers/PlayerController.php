@@ -47,15 +47,14 @@ class PlayerController extends Controller
     }
 
     public function index(){
-//        $player = $this -> playerRepo -> getByUserID($this->user()->id);
         return view('home');
     }
 
     public function character(){
         $player = $this -> playerRepo -> getByUserID($this->user()->id);
-//        dd($player->getStatistics());
         return view('character', compact('player'));
     }
+
 
     public function getCharacterLookVariants(){
         return response() -> json(array(
@@ -95,6 +94,10 @@ class PlayerController extends Controller
         return back();
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function get(Request $request)
     {
         $id = $request -> id;
@@ -106,86 +109,221 @@ class PlayerController extends Controller
 
     public function increment(Request $request)
     {
-        // $user_id = $this -> user() -> id;
-        $user_id = 1;
-        $character_id = $this -> playerRepo -> getByUserID($user_id) -> character -> id;
-        $attribute = $request -> attribute;
+        $user_id = $request -> user_id;
+        $player = $this -> playerRepo -> getByUserID($user_id);
+        $character = $player -> character;
+        $type = $request -> attribute;
 
-        switch($attribute){
-            case 'strength': $this -> characterRepo -> increaseStrength($character_id); break;
-            case 'dexterity': $this -> characterRepo -> increaseDexterity($character_id); break;
-            case 'durability': $this -> characterRepo -> increaseDurability($character_id); break;
-            case 'intelligence': $this -> characterRepo -> increaseIntelligence($character_id); break;
-            case 'lucky': $this -> characterRepo -> increaseLucky($character_id); break;
+        switch($type){
+            case 'strength': {
+                $price = $this->calculatePrice($character->strength_points);
+                if($player -> amount_of_gold >= $price){
+                    $this -> playerRepo -> addGold($player->id, -$price);
+                    $this -> characterRepo -> increaseStrength($character->id);
+                }
+            } break;
+            case 'dexterity': {
+                $price = $this->calculatePrice($character->dexterity_points);
+                if($player -> amount_of_gold >= $price){
+                    $this -> playerRepo -> addGold($player->id, -$price);
+                    $this -> characterRepo -> increaseDexterity($character->id);
+                }
+            } break;
+            case 'durability': {
+                $price = $this->calculatePrice($character->durability_points);
+                if($player -> amount_of_gold >= $price){
+                    $this -> playerRepo -> addGold($player->id, -$price);
+                    $this -> characterRepo -> increaseDurability($character->id);
+                }
+            } break;
+            case 'intelligence': {
+                $price = $this->calculatePrice($character->intelligence_points);
+                if($player -> amount_of_gold >= $price){
+                    $this -> playerRepo -> addGold($player->id, -$price);
+                    $this -> characterRepo -> increaseIntelligence($character->id);
+                }
+            } break;
+            case 'luck': {
+                $price = $this->calculatePrice($character->luck_points);
+                if($player -> amount_of_gold >= $price){
+                    $this -> playerRepo -> addGold($player->id, -$price);
+                    $this -> characterRepo -> increaseLuck($character->id);
+                }
+            } break;
         }
 
         return response() -> json([
             'player' => $this -> playerRepo -> getByUserID($user_id)
         ]);
+    }
+
+    private function calculatePrice($level){
+        $price = 10;
+        $level -= 10;
+        while($level > 0){
+            $price *= 1.11;
+            $level--;
+        }
+        return $price;
     }
 
     public function set(Request $request)
     {
-        //        $user_id = $this -> user() -> id;
-        $user_id = 1;
+        $user_id = $request -> user_id;
         $player_id = $this -> playerRepo -> getByUserID($user_id) -> id;
-        $attribute = $request -> attribute;
-        $item_id = $request -> item_id;
+        $backpack_item_id = $request -> backpack_item_id;
 
-        $this -> setItem($item_id, $attribute, $player_id);
+        $item = $this -> itemRepo -> get( $this -> backpackItemRepo -> get($backpack_item_id) -> item_id );
+
+        if($this -> setItem($item -> id, $item -> type, $player_id)){
+            $this -> backpackItemRepo -> delete($backpack_item_id);
+        }
 
         return response() -> json([
             'player' => $this -> playerRepo -> getByUserID($user_id)
         ]);
-
     }
 
-    private function setItem($item_id, $attribute, $player_id){
-        switch ($attribute){
+    private function setItem($item_id, $type, $player_id){
+        switch ($type){
             case 'weapon':
-                if ( $this -> itemRepo -> is( $item_id, $attribute ) ) $this -> playerRepo -> setWeapon($player_id, $item_id);
+                if ( $this -> itemRepo -> is( $item_id, $type ) ) {
+                    $this -> playerRepo -> setWeapon($player_id, $item_id);
+                    return true;
+                }
                 break;
 
             case 'shield':
-                if ( $this -> itemRepo -> is( $item_id, $attribute ) ) $this -> playerRepo -> setShield($player_id, $item_id);
+                if ( $this -> itemRepo -> is( $item_id, $type ) ) {
+                    $this -> playerRepo -> setShield($player_id, $item_id);
+                    return true;
+                }
                 break;
 
             case 'helmet':
-                if ( $this -> itemRepo -> is( $item_id, $attribute ) ) $this -> playerRepo -> setHelmet($player_id, $item_id);
+                if ( $this -> itemRepo -> is( $item_id, $type ) ) {
+                    $this -> playerRepo -> setHelmet($player_id, $item_id);
+                    return true;
+                }
                 break;
 
             case 'armor':
-                if ( $this -> itemRepo -> is( $item_id, $attribute ) ) $this -> playerRepo -> setArmor($player_id, $item_id);
+                if ( $this -> itemRepo -> is( $item_id, $type ) ) {
+                    $this -> playerRepo -> setArmor($player_id, $item_id);
+                    return true;
+                }
                 break;
 
             case 'gloves':
-                if ( $this -> itemRepo -> is( $item_id, $attribute ) ) $this -> playerRepo -> setGloves($player_id, $item_id);
+                if ( $this -> itemRepo -> is( $item_id, $type ) ) {
+                    $this -> playerRepo -> setGloves($player_id, $item_id);
+                    return true;
+                }
                 break;
 
             case 'belt':
-                if ( $this -> itemRepo -> is( $item_id, $attribute ) ) $this -> playerRepo -> setBelt($player_id, $item_id);
+                if ( $this -> itemRepo -> is( $item_id, $type ) ) {
+                    $this -> playerRepo -> setBelt($player_id, $item_id);
+                    return true;
+                }
                 break;
 
             case 'boots':
-                if ( $this -> itemRepo -> is( $item_id, $attribute ) ) $this -> playerRepo -> setBoots($player_id, $item_id);
+                if ( $this -> itemRepo -> is( $item_id, $type ) ) {
+                    $this -> playerRepo -> setBoots($player_id, $item_id);
+                    return true;
+                }
                 break;
 
             case 'necklace':
-                if ( $this -> itemRepo -> is( $item_id, $attribute ) ) $this -> playerRepo -> setNecklace($player_id, $item_id);
+                if ( $this -> itemRepo -> is( $item_id, $type ) ) {
+                    $this -> playerRepo -> setNecklace($player_id, $item_id);
+                    return true;
+                }
                 break;
 
             case 'ring':
-                if ( $this -> itemRepo -> is( $item_id, $attribute ) ) $this -> playerRepo -> setRing($player_id, $item_id);
+                if ( $this -> itemRepo -> is( $item_id, $type ) ) {
+                    $this -> playerRepo -> setRing($player_id, $item_id);
+                    return true;
+                }
                 break;
 
             case 'accessory':
-                if ( $this -> itemRepo -> is( $item_id, $attribute ) ) $this -> playerRepo -> setAccessory($player_id, $item_id);
+                if ( $this -> itemRepo -> is( $item_id, $type ) ) {
+                    $this -> playerRepo -> setAccessory($player_id, $item_id);
+                    return true;
+                }
                 break;
         }
+
+        return false;
     }
 
-    public function putIntoBackpack(Request $request)
+    public function put(Request $request)
     {
+        $user_id = $request -> user_id;
+        $item = $this -> itemRepo -> get($request -> item_id);
+        $player = $this -> playerRepo -> getByUserID($user_id);
+        $backpack_id = $player -> backpack_id;
 
+        if($this->putItem($item->type, $player->id)){
+            $this -> backpackItemRepo -> create($backpack_id, $item->id);
+        }
+
+        return response() -> json([
+            'player' => $this -> playerRepo -> getByUserID($user_id)
+        ]);
+    }
+
+    private function putItem($type, $player_id)
+    {
+        switch($type){
+            case 'sword':
+                $this -> playerRepo -> setWeapon($player_id, null);
+                return true;
+
+            case 'wand':
+                $this -> playerRepo -> setWeapon($player_id, null);
+                return true;
+
+            case 'shield':
+                $this -> playerRepo -> setShield($player_id, null);
+                return true;
+
+            case 'helmet':
+                $this -> playerRepo -> setHelmet($player_id, null);
+                return true;
+
+            case 'armor':
+                $this -> playerRepo -> setArmor($player_id, null);
+                return true;
+
+            case 'gloves':
+                $this -> playerRepo -> setGloves($player_id, null);
+                return true;
+
+            case 'belt':
+                $this -> playerRepo -> setBelt($player_id, null);
+                return true;
+
+            case 'boots':
+                $this -> playerRepo -> setBoots($player_id, null);
+                return true;
+
+            case 'necklace':
+                $this -> playerRepo -> setNecklace($player_id, null);
+                return true;
+
+            case 'ring':
+                $this -> playerRepo -> setRing($player_id, null);
+                return true;
+
+            case 'accessory':
+                $this -> playerRepo -> setAccessory($player_id, null);
+                return true;
+        }
+
+        return false;
     }
 }

@@ -74,6 +74,19 @@
                     </form>
                 </div>
 
+                <div class="card-panel">
+                    <h5><i class="fa fa-trash" aria-hidden="true"></i> Delete account</h5>
+
+                    {{-- TODO --}}
+                    {{--{{ route('player.options.delete') }}--}}
+                    <form method="post" action="#">
+
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn red waves-effect"><i class="fa fa-trash" aria-hidden="true"></i> Delete all data</button>
+
+                    </form>
+                </div>
+
             </div>
         </div>
 

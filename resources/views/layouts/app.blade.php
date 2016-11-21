@@ -12,13 +12,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('/css/materialize.min.css') }}" rel="stylesheet">
-    {{--<link href="/css/app.css" rel="stylesheet">--}}
     <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/jquery.mCustomScrollbar.css') }}" rel="stylesheet">
 
+    <script src="{{ asset('/js/libraries/jQuery/jquery-3.1.1.js') }}"></script>
 
-    <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -44,11 +43,11 @@
     </div>
 
     <!-- Scripts -->
+
     <script src="{{ asset('/js/app.js') }}"></script>
 
     <script src="{{ asset('/js/libraries/linq/linq.js') }}"></script>
 
-    <script src="{{ asset('/js/libraries/jQuery/jquery-3.1.1.js') }}"></script>
     <script src="{{ asset('/js/libraries/jQuery/jquery-ui.js') }}"></script>
 
     <script src="{{ asset('/js/materialize.min.js') }}"></script>

@@ -29,11 +29,13 @@ class MonsterRepo implements IMonsterRepo
         $monster = $this -> model -> newInstance();
         $monster -> character_id = $character_id;
 
-        $statistics = $player -> getStatistics();
+        $statistics = $player -> statistics();
 
         $armor_points = rand($statistics['armor_points'] * 0.5, $statistics['armor_points'] * 1.05);
         $damage_min_points = rand($statistics['damage_min_points'] * 0.5, $statistics['damage_min_points'] * 1.05);
         $damage_max_points = rand($damage_min_points, $damage_min_points * 2);
+
+        $monster -> attack_type = rand(0,1) ? 'melee' : 'magic';
 
         $monster -> armor_points = $armor_points;
         $monster -> damage_min_points = $damage_min_points;

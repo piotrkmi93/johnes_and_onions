@@ -45,10 +45,10 @@ class QuestRepo implements IQuestRepo
 
         $duration = rand(1,4); // 150, 300, 450, 600
         switch ($duration){
-            case 1: $duration = 150; break;
-            case 2: $duration = 300; break;
-            case 3: $duration = 450; break;
-            case 4: $duration = 600; break;
+            case 1: $duration = 15; break;
+            case 2: $duration = 30; break;
+            case 3: $duration = 45; break;
+            case 4: $duration = 60; break;
         }
 
         $quest -> duration = $duration;
@@ -76,6 +76,13 @@ class QuestRepo implements IQuestRepo
     public function getByPlayerId($player_id)
     {
         return $this -> model -> where('player_id', $player_id) -> with('itemReward') -> with('monster') -> get();
+    }
+
+    public function takeItem($id)
+    {
+        $quest = $this -> model -> find($id);
+        $quest -> item_reward_id = null;
+        return $quest -> save() ? $quest : null;
     }
 
 

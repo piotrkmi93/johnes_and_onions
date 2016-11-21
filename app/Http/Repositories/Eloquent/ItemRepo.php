@@ -48,7 +48,7 @@ class ItemRepo implements  IItemRepo
 
     public function get($id)
     {
-        return $this -> model -> find($id);
+        return $this -> model -> with('itemLook') -> find($id);
     }
 
     public function is($id, $type)

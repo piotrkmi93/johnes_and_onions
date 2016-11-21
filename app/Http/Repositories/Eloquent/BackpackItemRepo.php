@@ -44,5 +44,8 @@ class BackpackItemRepo implements IBackpackItemRepo
         return $this -> model -> where('backpack_id', $backpack_id) -> get();
     }
 
-
+    public function countByBackpackID($backpack_id)
+    {
+        return $this -> model -> where('backpack_id', $backpack_id) -> count();
+    }
 }
