@@ -19,17 +19,23 @@ class Controller extends BaseController
         return Auth::user();
     }
 
+    protected function player()
+    {
+        $playerRepo = new PlayerRepo(new Player());
+        return $playerRepo -> getByUserID($this -> user() -> id);
+    }
+
     protected function busy($busy)
     {
         $playerRepo = new PlayerRepo(new Player());
-        $id = $playerRepo -> getByUserID($this -> user() -> id) -> id;
+        $id = $this -> player() -> id;
         return $playerRepo -> busy($id, $busy);
     }
 
     public function is_busy()
     {
         $playerRepo = new PlayerRepo(new Player());
-        $busy = $playerRepo -> getByUserID($this -> user() -> id) -> busy;
+        $busy = $this -> player() -> busy;
         return $busy == 'f' ? false : $busy;
     }
 }

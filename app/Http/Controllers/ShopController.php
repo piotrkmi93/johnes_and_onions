@@ -43,13 +43,18 @@ class ShopController extends Controller
 
     private function create()
     {
-
+        $this -> shopRepo -> create('armorer', $this->playerRepo->getByUserID($this -> user() -> id), $this -> backpackRepo -> create() -> id);
+        $this -> shopRepo -> create('blacksmith', $this->playerRepo->getByUserID($this -> user() -> id), $this -> backpackRepo -> create() -> id);
+        $this -> shopRepo -> create('jeweler', $this->playerRepo->getByUserID($this -> user() -> id), $this -> backpackRepo -> create() -> id);
     }
 
     private function reset()
     {
         $player = $this -> playerRepo -> getByUserID($this -> user() -> id);
         $shops = $this -> shopRepo -> getByPlayerId($player -> id);
+
+        if(!$shops)
+            $this -> create();
 
         foreach($shops as $shop)
         {
@@ -61,6 +66,57 @@ class ShopController extends Controller
                 $this -> backpackItemRepo -> delete($backpackItem -> id);
             }
 
+            // TODO: new items
+            for($i=0; $i<6; $i++)
+            {
+                $item = $this -> generateItem($shop -> type);
+            }
         }
+
+        for($i=0; $i<6; ++$i)
+        {
+
+        }
+    }
+
+    private function generateItem($shopType)
+    {
+
+    }
+
+    private function randomItemType($shopType)
+    {
+        $types = [];
+
+        switch($shopType)
+        {
+            case 'armorer':
+                $types = [
+                    'sword',
+                    'wand',
+                    'shield',
+                ];
+                break;
+
+            case 'blacksmith':
+                $types = [
+                    'helmet',
+                    'armor',
+                    'gloves',
+                    'belt',
+                    'boots',
+                ];
+                break;
+
+            case 'jeweler':
+                $types = [
+                    'necklace',
+                    'ring',
+                    'accessory',
+                ];
+                break;
+        }
+
+        return !empty($types) ? $types[rand(0, count($types)-1)] : null;
     }
 }
