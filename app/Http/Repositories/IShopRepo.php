@@ -16,4 +16,5 @@ interface IShopRepo
     public function getByPlayerIdAndType($player_id, $type);
     public function delete($id);
     public function reset($id);
+    public function get($id);
 }

@@ -13,8 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('test', 'ShopController@test');
-
 Route::post('quest/create', 'QuestController@create');
 
 Route::get('/user', function (Request $request) {
@@ -49,4 +47,10 @@ Route::post('/player/set', 'PlayerController@set');
  * @param integer item_id
  */
 Route::post('/player/put', 'PlayerController@put');
+
+
+// Shop async requests
+Route::post('/shop/get', 'ShopController@get');
+Route::post('/shop/buy', 'ShopController@buy');
+Route::post('/shop/sell', 'ShopController@sell');
 

@@ -9,6 +9,7 @@
 namespace App\Http\Repositories\Eloquent;
 
 
+use App\BackpackItem;
 use App\Http\Repositories\IShopRepo;
 use App\Shop;
 use Carbon\Carbon;
@@ -51,7 +52,7 @@ class ShopRepo implements IShopRepo
      */
     public function getByPlayerId($player_id)
     {
-        return $this -> model -> where('player_id', $player_id) -> get();
+        return $this -> model -> where('player_id', $player_id) -> with('item') -> get();
     }
 
     /**
@@ -61,7 +62,7 @@ class ShopRepo implements IShopRepo
      */
     public function getByPlayerIdAndType($player_id, $type)
     {
-        return $this -> model -> where('player_id', $player_id) -> where('type', $type) -> first();
+        return $this -> model -> where('player_id', $player_id) -> where('type', $type) -> with('item') -> first();
     }
 
     /**
@@ -83,4 +84,15 @@ class ShopRepo implements IShopRepo
         $shop -> last_update = Carbon::now();
         return $shop -> save() ? $shop : null;
     }
+
+    /**
+     * @param $id
+     * @return BackpackItem
+     */
+    public function get($id)
+    {
+        return $this -> model -> with('item') -> find($id);
+    }
+
+
 }

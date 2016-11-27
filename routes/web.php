@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/arena/{defender?}', 'DuelController@index') -> name('player.arena');
     Route::get('/character', 'PlayerController@character') -> name('player.character');
     Route::get('/work/{gold?}', 'WorkController@index') -> name('player.work');
+    Route::get('shop/{shopType}', 'ShopController@index') -> name('player.shop');
     Route::get('/ranking', 'DuelController@ranking') -> name('player.ranking');
     Route::get('/options', 'OptionsController@index') -> name('player.options');
 
@@ -38,7 +39,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/options/name', 'OptionsController@name') -> name('player.options.name');
     Route::post('/options/description', 'OptionsController@description') -> name('player.options.description');
     Route::post('/options/delete', 'OptionsController@delete') -> name('player.options.delete');
-
 });
 
 
