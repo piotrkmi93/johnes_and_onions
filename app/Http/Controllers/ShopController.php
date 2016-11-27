@@ -14,6 +14,21 @@ use App\Http\Requests;
 
 class ShopController extends Controller
 {
+    public function test(Request $request)
+    {
+        $testString = $request -> test_string;
+
+        // Operacje
+
+        return response() -> json(
+            [
+                'success' => true,
+                'string' => $testString,
+            ]
+        );
+    }
+
+
     private $shopRepo,
             $playerRepo,
             $backpackRepo,
@@ -83,6 +98,8 @@ class ShopController extends Controller
     {
 
     }
+
+
 
     private function randomItemType($shopType)
     {

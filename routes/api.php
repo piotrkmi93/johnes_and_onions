@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::post('test', 'ShopController@test');
+
 Route::post('quest/create', 'QuestController@create');
 
 Route::get('/user', function (Request $request) {

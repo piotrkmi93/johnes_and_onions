@@ -13,6 +13,7 @@ use App\Http\Repositories\Eloquent\LookVariantColorRepo;
 use App\Http\Repositories\Eloquent\MonsterRepo;
 use App\Http\Repositories\Eloquent\PlayerRepo;
 use App\Http\Repositories\Eloquent\QuestRepo;
+use App\Http\Repositories\Eloquent\ShopRepo;
 use App\Http\Repositories\Eloquent\UserRepo;
 use App\Http\Repositories\Eloquent\WordRepo;
 use App\Http\Repositories\Eloquent\WorkRepo;
@@ -27,6 +28,7 @@ use App\Http\Repositories\ILookVariantColorRepo;
 use App\Http\Repositories\IMonsterRepo;
 use App\Http\Repositories\IPlayerRepo;
 use App\Http\Repositories\IQuestRepo;
+use App\Http\Repositories\IShopRepo;
 use App\Http\Repositories\IUserRepo;
 use App\Http\Repositories\IWordRepo;
 use App\Http\Repositories\IWorkRepo;
@@ -65,5 +67,6 @@ class RepoServiceProvider extends ServiceProvider
         $this -> app -> singleton(IWordRepo::class, WordRepo::class);
         $this -> app -> singleton(IItemLookRepo::class, ItemLookRepo::class);
         $this -> app -> singleton(IWorkRepo::class, WorkRepo::class);
+        $this -> app -> singleton(IShopRepo::class, ShopRepo::class);
     }
 }
