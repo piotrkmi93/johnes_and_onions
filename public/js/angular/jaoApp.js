@@ -5,7 +5,8 @@
     angular.module('jaoApp', [
         'ngDragDrop',
 
-        'jaoApp.player'
+        'jaoApp.player',
+        'jaoApp.nav'
     ]).config(setInterpolation);
 
     function setInterpolation($interpolateProvider){

@@ -75,7 +75,7 @@ class Player extends Model
             'armor_points' => 0,
             'damage_min_points' => 0,
             'damage_max_points' => 0,
-            'attack_type' => $this -> weapon -> type == 'sword' ? 'melee' : 'magic',
+            'attack_type' => isset($this -> weapon) ? ($this -> weapon -> type == 'sword' ? 'melee' : 'magic') : 'melee',
         );
 
         if( $this->accessory ){
