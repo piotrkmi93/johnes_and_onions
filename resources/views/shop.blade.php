@@ -1,7 +1,9 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Piotr Kmiecik
- * Date: 16.11.2016
- * Time: 16:23
- */
+@extends('layouts.app')
+
+@section('content')
+
+    <div class="card-panel quest">
+
+    </div>
+
+@endsection

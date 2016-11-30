@@ -48,3 +48,9 @@ Route::post('/player/set', 'PlayerController@set');
  */
 Route::post('/player/put', 'PlayerController@put');
 
+
+// Shop async requests
+Route::post('/shop/get', 'ShopController@get');
+Route::post('/shop/buy', 'ShopController@buy');
+Route::post('/shop/sell', 'ShopController@sell');
+

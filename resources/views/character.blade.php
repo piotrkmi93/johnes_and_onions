@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="card-panel" ng-controller="playerDetailsController as player">
-        <h4>Character</h4>
+        <h1><i class="fa fa-user" aria-hidden="true"></i> Character</h1>
 
         <div class="row" ng-init="player.userId={{ $player -> id }}">
             <div class="col s6" ng-init="player.id={{ Auth::user() -> id }}">

@@ -31,5 +31,8 @@ interface IPlayerRepo
     public function get($id);
     public function getByUserID($user_id);
     public function levelUp($id);
+    public function ranking();
+    public function nextInRanking($id);
+    public function busy($id, $busy);
 
 }
