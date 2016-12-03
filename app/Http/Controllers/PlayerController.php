@@ -186,6 +186,7 @@ class PlayerController extends Controller
 
     private function setItem($item_id, $type, $player_id){
         switch ($type){
+            case 'weapon':
             case 'sword':
             case 'wand':
                 if ( $this -> itemRepo -> is( $item_id, $type ) ) {

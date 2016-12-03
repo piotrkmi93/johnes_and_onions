@@ -81,7 +81,7 @@ class ShopController extends Controller
             return $this->index($shopType);
         }
 
-        return view('shop', compact('shop'));
+        return view('shop', compact('shop', 'player'));
     }
 
     /**
