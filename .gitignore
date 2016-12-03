@@ -7,6 +7,10 @@ Homestead.json
 Homestead.yaml
 .env
 .orig
+app/Http/Controllers/PlayerController.php.orig
+resources/views/partials/creator.blade.php.orig
+database/migrations/2016_11_19_115913_update0.php
+
 resources/views/layouts/app.blade_BACKUP_11312.php
 resources/views/layouts/app.blade_BASE_11312.php
 resources/views/layouts/app.blade_LOCAL_11312.php

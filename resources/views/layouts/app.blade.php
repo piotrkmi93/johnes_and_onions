@@ -57,9 +57,13 @@
     <script src="{{ asset('/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 
     <script src="{{ asset('/js/angular/jaoApp.js') }}"></script>
+
     <script src="{{ asset('/js/angular/playerModule/jaoApp.player.js') }}"></script>
     <script src="{{ asset('/js/angular/playerModule/jaoApp.player.createController.js') }}"></script>
     <script src="{{ asset('/js/angular/playerModule/jaoApp.player.detailsController.js') }}"></script>
+
+    <script src="{{ asset('/js/angular/navModule/jaoApp.nav.js') }}"></script>
+    <script src="{{ asset('/js/angular/navModule/jaoApp.nav.navController.js') }}"></script>
 
 </body>
 </html>

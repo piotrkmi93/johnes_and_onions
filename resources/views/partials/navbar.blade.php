@@ -1,4 +1,4 @@
-<nav>
+<nav ng-controller="navController as nav">
     <div class="nav-wrapper">
         <a class="brand-logo" href="{{ url('/') }}">
             <i class="fa fa-lemon-o" aria-hidden="true"></i>
@@ -20,7 +20,7 @@
 
                 </li>
                 <li>
-                    <i class="fa fa-database"></i> {{ getPlayer()->amount_of_gold }} gold
+                    <i class="fa fa-database"></i> //nav.gold// gold
                 </li>
                 @endif
                 <li>

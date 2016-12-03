@@ -24,8 +24,8 @@ Route::post('/player/quest/delete', 'QuestController@delete'); // usuwa questy, 
 
 Route::post('/player/get', 'PlayerController@get');
 
-/**
- * Inkrementuje podaną cechę gracza
+/** * Inkrementuje podaną cechę gracza
+
  *
  * @param integer user_id
  * @param string attribute
