@@ -144,7 +144,7 @@ class PlayerController extends Controller
                 }
             } break;
             case 'luck': {
-                $price = $this->calculatePrice($character->luck_points);
+                $price = $this->calculatePrice($character->lucky_points);
                 if($player -> amount_of_gold >= $price){
                     $this -> playerRepo -> addGold($player->id, -$price);
                     $this -> characterRepo -> increaseLuck($character->id);
