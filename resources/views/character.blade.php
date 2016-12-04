@@ -459,7 +459,7 @@
                         <p>Dexterity points: //player.dexterity_points// <button class="waves-effect waves-light btn" ng-click="player.increase('dexterity')"><i class="fa fa-plus"></i></button></p>
                         <p>Intelligence points: //player.intelligence_points// <button class="waves-effect waves-light btn" ng-click="player.increase('intelligence')"><i class="fa fa-plus"></i></button></p>
                         <p>Durability points: //player.durability_points// <button class="waves-effect waves-light btn" ng-click="player.increase('durability')"><i class="fa fa-plus"></i></button></p>
-                        <p>Luck points: //player.luck_points// <button class="waves-effect waves-light btn" ng-click="player.increase('luck')"><i class="fa fa-plus"></i></button></p>
+                        <p>Luck points: //player.lucky_points// <button class="waves-effect waves-light btn" ng-click="player.increase('luck')"><i class="fa fa-plus"></i></button></p>
                     </div>
 
                     <div class="col s6">
@@ -467,7 +467,7 @@
                         <p>Ability to evade: //player.abilityToEvade()//</p>
                         <p>Magic resistance: //player.magicResistance()//</p>
                         <p>Hit points: //player.hitPoints()//</p>
-                        <p>Critical chance: {{ $player->statistics()['luck_points'] * 5 / ($player->character->level * 2) }}</p>
+                        <p>Critical chance: //player.criticalChance()//</p>
                     </div>
 
                 </div>

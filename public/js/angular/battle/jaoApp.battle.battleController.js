@@ -61,7 +61,7 @@
 
             var json = {
                 user_id: userId
-            }
+            };
             json = JSON.stringify(json);
             $http.post('/api/player/quest/delete', json);
         }

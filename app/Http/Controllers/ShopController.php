@@ -251,7 +251,7 @@ class ShopController extends Controller
      */
     public function get(Request $request)
     {
-        $items = $this -> backpackItemRepo -> getByBackpackID($this -> shopRepo -> get($request -> shop_id) -> backpack_id);
-        return response() -> json(['items' => $items,]);
+        $shop = $this -> shopRepo -> getByPlayerIdAndType($request -> player_id, $request -> shop_type);
+        return response() -> json(['shop' => $shop,]);
     }
 }

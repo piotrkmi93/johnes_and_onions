@@ -2,8 +2,14 @@
 
 @section('content')
 
-    <div class="row">
-        <div class="col s5">
+    <div class="row" ng-controller="battleController as battle">
+        @if(isset($steps))
+        <div class="col s5" ng-init="battle.init({{$steps?$steps:'undefined'}}, {{ $player_1 }}, {{ $player_2 }}, {{ Auth::user() -> id }})">
+        @elseif(!isset($player_2))
+        <div class="col s5" ng-init="battle.init2({{ $player_1 -> statistics()['durability_points'] * 5 * ($player_1->character->level + 1) }})">
+        @else
+        <div class="col s5" ng-init="battle.init2({{ $player_1 -> statistics()['durability_points'] * 5 * ($player_1->character->level + 1) }}, {{ $player_2 -> statistics()['durability_points'] * 5 * ($player_2->character->level + 1) }})">
+        @endif
             <div class="card-panel">
                 <div class="text-center">
                     <h3>{{ $player_1 -> character -> name }}</h3>
@@ -20,7 +26,7 @@
                 </div>
 
                 <div class="text-center">
-                    <h4>{{ $player_1 -> statistics()['durability_points'] * 5 * ($player_1->character->level + 1) }} / {{ $player_1 -> statistics()['durability_points'] * 5 * ($player_1->character->level + 1) }}</h4>
+                    <h4>// battle.roundHealth(battle.player1.health) // / {{ $player_1 -> statistics()['durability_points'] * 5 * ($player_1->character->level + 1) }}</h4>
                     <div class="progress">
                         <div class="determinate" style="width: 100%"></div>
                     </div>
@@ -29,7 +35,7 @@
                     <p>Dexterity points: {{ $player_1->statistics()['dexterity_points'] }}</p>
                     <p>Intelligence points: {{ $player_1->statistics()['intelligence_points'] }}</p>
                     <p>Durability points: {{ $player_1->statistics()['durability_points'] }}</p>
-                    <p>Luck points: {{ $player_1->statistics()['luck_points'] }}</p>
+                    <p>Luck points: {{ $player_1->statistics()['lucky_points'] }}</p>
                 </div>
 
             </div>
@@ -59,7 +65,7 @@
                     </div>
 
                     <div class="text-center">
-                        <h4>{{ $player_2 -> statistics()['durability_points'] * 5 * ($player_2->character->level + 1) }} / {{ $player_2 -> statistics()['durability_points'] * 5 * ($player_2->character->level + 1) }}</h4>
+                        <h4>// battle.roundHealth(battle.player2.health) // / {{ $player_2 -> statistics()['durability_points'] * 5 * ($player_2->character->level + 1) }}</h4>
                         <div class="progress">
                             <div class="determinate" style="width: 100%"></div>
                         </div>
@@ -68,7 +74,7 @@
                         <p>Dexterity points: {{ $player_2->statistics()['dexterity_points'] }}</p>
                         <p>Intelligence points: {{ $player_2->statistics()['intelligence_points'] }}</p>
                         <p>Durability points: {{ $player_2->statistics()['durability_points'] }}</p>
-                        <p>Luck points: {{ $player_2->statistics()['luck_points'] }}</p>
+                        <p>Luck points: {{ $player_2->statistics()['lucky_points'] }}</p>
                     </div>
                 </div>
             </div>
@@ -92,28 +98,5 @@
             @endif
         </div>
     </div>
-
-    <script>
-        $(document).ready(function () {
-
-            @if(isset($steps))
-                var steps = JSON.parse(('{{ $steps }}').replace(/&quot;/g, '"'));
-                console.log(steps);
-            @endif
-
-            @if(isset($quest) && $quest)
-                $.ajax({
-                    method: "POST",
-                    url: "/api/player/quest/delete",
-                    data: { user_id: '{{ Auth::user()->id }}' }
-                })
-                    .done(function( response ) {
-                        console.log(response);
-                    });
-            @endif
-
-        });
-
-    </script>
 
 @endsection

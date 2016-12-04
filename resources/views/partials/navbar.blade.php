@@ -20,7 +20,7 @@
 
                 </li>
                 <li>
-                    <i class="fa fa-database"></i> //nav.gold// gold
+                    <i class="fa fa-database" ng-init="nav.gold={{ getPlayer()->amount_of_gold }}"></i> //nav.gold// gold
                 </li>
                 @endif
                 <li>

@@ -33,7 +33,7 @@ class FightController extends Controller
 
             if($attack_value < 0) $attack_value = 1;
 
-            if(rand(0,100) < $attacker->statistics()['luck_points'] * 5 / ($attacker->character->level * 2))
+            if(rand(0,100) < $attacker->statistics()['lucky_points'] * 5 / ($attacker->character->level * 2))
             {
                 $attack_value *= 2;
                 $is_critical = true;

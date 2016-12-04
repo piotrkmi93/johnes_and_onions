@@ -84,6 +84,7 @@ nav{
     width:100%;
     /*top: 50%;*/
     /*transform: translateY(-50%);*/
+    left: 0px;
 }
 
 .character-box-info{
