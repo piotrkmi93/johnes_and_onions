@@ -9,6 +9,7 @@ use App\Http\Repositories\IItemRepo;
 use App\Http\Repositories\IPlayerRepo;
 use App\Http\Repositories\IShopRepo;
 use App\Http\Repositories\IWordRepo;
+use App\Player;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -120,12 +121,13 @@ class ShopController extends Controller
 
     /**
      * Generuje pojedynczy przedmiot
-     * @param $shopType
+     * @param string $shopType
+     * @param Player|null $player
      * @return mixed
      */
-    private function generateItem($shopType)
+    private function generateItem($shopType, Player $player = null)
     {
-        $player = $this->player();
+        if(!isset($player)) $player = $this->player();
         $type = $this->randomItemType($shopType);
 
         return $this->itemRepo->create(
@@ -212,7 +214,7 @@ class ShopController extends Controller
 
         $this -> playerRepo -> addGold($player->id, -$backpackItem->item->price);
 
-        $newItem = $this -> backpackItemRepo -> create($shop->backpack_id, $this -> generateItem($shop->type) -> id);
+        $newItem = $this -> backpackItemRepo -> create($shop->backpack_id, $this -> generateItem($shop->type, $player) -> id);
 
         return response() -> json(
             [
