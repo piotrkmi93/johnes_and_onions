@@ -5,9 +5,9 @@
 (function () {
     angular
         .module('jaoApp.shop')
-        .controller('shopController', ['$scope', '$http', navController]);
+        .controller('shopController', ['$scope', '$http', shopController]);
 
-    function navController($scope, $http) {
+    function shopController($scope, $http) {
         var self = this;
 
         self.armorer = [

@@ -71,5 +71,8 @@
     <script src="{{ asset('/js/angular/shop/jaoApp.shop.js') }}"></script>
     <script src="{{ asset('/js/angular/shop/jaoApp.shop.shopController.js') }}"></script>
 
+    <script src="{{ asset('/js/angular/ranking/jaoApp.ranking.js') }}"></script>
+    <script src="{{ asset('/js/angular/ranking/jaoApp.ranking.rankingController.js') }}"></script>
+
 </body>
 </html>

@@ -8,7 +8,8 @@
         'jaoApp.player',
         'jaoApp.nav',
         'jaoApp.battle',
-        'jaoApp.shop'
+        'jaoApp.shop',
+        'jaoApp.ranking'
     ]).config(setInterpolation);
 
     function setInterpolation($interpolateProvider){
