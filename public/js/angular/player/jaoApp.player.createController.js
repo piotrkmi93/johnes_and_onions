@@ -234,7 +234,5 @@
             result[array[0]] = array[1];
             return result;
         }
-
-        console.log(self);
     }
 })();

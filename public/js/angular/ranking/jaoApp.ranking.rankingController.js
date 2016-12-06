@@ -81,7 +81,5 @@
                 result += self.player.shield[parameter];
             return result;
         }
-
-        console.log(self);
     }
 })();

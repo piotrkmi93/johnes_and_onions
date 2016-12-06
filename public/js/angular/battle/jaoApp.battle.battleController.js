@@ -14,8 +14,6 @@
         self.init2 = init2;
         self.roundHealth = Math.round;
 
-        // self.time = 500;
-
         function battle() {
             for (var i = 0; i < self.stages.length; ++i) {
                 $timeout(function (i) {
@@ -33,7 +31,7 @@
                                 self.player2.health = 0;
                         });
                     }
-                }, 10 * (i + 1), false, i);
+                }, 350 * (i + 1), false, i);
             }
         }
 
@@ -49,6 +47,7 @@
         }
 
         function init(stages, player1, player2, userId) {
+            console.log(player2);
             self.player1 = player1;
             self.player2 = player2;
 
@@ -94,8 +93,6 @@
                 result += player.shield[parameter];
             return result;
         }
-
-        console.log(self);
     };
 
 })();
