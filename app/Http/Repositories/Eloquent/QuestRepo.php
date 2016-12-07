@@ -45,10 +45,10 @@ class QuestRepo implements IQuestRepo
 
         $duration = rand(1,4); // 150, 300, 450, 600
         switch ($duration){
-            case 1: $duration = 1; break;
-            case 2: $duration = 2; break;
-            case 3: $duration = 3; break;
-            case 4: $duration = 4; break;
+            case 1: $duration = 150; break;
+            case 2: $duration = 300; break;
+            case 3: $duration = 450; break;
+            case 4: $duration = 600; break;
         }
 
         $quest -> duration = $duration;
