@@ -84,6 +84,7 @@ nav{
     width:100%;
     /*top: 50%;*/
     /*transform: translateY(-50%);*/
+    left: 0px;
 }
 
 .character-box-info{
@@ -145,3 +146,16 @@ nav ul li {
 .item-box:hover > .item-box-info{
     display: block;
 }
+
+}
+
+.hit{
+    position: absolute;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+
+    top: 200px;
+    left: 500px;
