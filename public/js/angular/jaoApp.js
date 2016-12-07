@@ -6,7 +6,10 @@
         'ngDragDrop',
 
         'jaoApp.player',
-        'jaoApp.nav'
+        'jaoApp.nav',
+        'jaoApp.battle',
+        'jaoApp.shop',
+        'jaoApp.ranking'
     ]).config(setInterpolation);
 
     function setInterpolation($interpolateProvider){

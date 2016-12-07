@@ -34,7 +34,7 @@ class ItemRepo implements  IItemRepo
         if ( isset( $attributes['dexterity_points'] ) ) $item -> dexterity_points = $attributes['dexterity_points'];
         if ( isset( $attributes['intelligence_points'] ) ) $item -> intelligence_points = $attributes['intelligence_points'];
         if ( isset( $attributes['durability_points'] ) ) $item -> durability_points = $attributes['durability_points'];
-        if ( isset( $attributes['lucky_points'] ) ) $item -> lucky_points = $attributes['lucky_points'];
+        if ( isset( $attributes['luck_points'] ) ) $item -> luck_points = $attributes['luck_points'];
         if ( isset( $attributes['damage_min_points'] ) ) $item -> damage_min_points = $attributes['damage_min_points'];
         if ( isset( $attributes['damage_max_points'] ) ) $item -> damage_max_points = $attributes['damage_max_points'];
 

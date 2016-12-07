@@ -124,7 +124,7 @@ class PlayerRepo implements IPlayerRepo
     public function setRing($id, $ring_id)
     {
         $player = $this -> get($id);
-        $player -> aring_id = $ring_id;
+        $player -> ring_id = $ring_id;
         return $this -> save($player);
     }
 

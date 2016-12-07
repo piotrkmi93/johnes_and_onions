@@ -139,7 +139,7 @@ class ShopController extends Controller
                 'dexterity_points' => rand(0, $player->required_experience_points * 0.01),
                 'intelligence_points' => rand(0, $player->required_experience_points * 0.01),
                 'durability_points' => rand(0, $player->required_experience_points * 0.01),
-                'lucky_points' => rand(0, $player->required_experience_points * 0.01),
+                'luck_points' => rand(0, $player->required_experience_points * 0.01),
                 'damage_min_points' => ($type == 'sword' || $type == 'wand') ? rand($player->required_experience_points * 0.01, $player->required_experience_points * 0.02) : 0,
                 'damage_max_points' => ($type == 'sword' || $type == 'wand') ? rand($player->required_experience_points * 0.02, $player->required_experience_points * 0.03) : 0,
             ],
@@ -251,7 +251,7 @@ class ShopController extends Controller
      */
     public function get(Request $request)
     {
-        $items = $this -> backpackItemRepo -> getByBackpackID($this -> shopRepo -> get($request -> shop_id) -> backpack_id);
-        return response() -> json(['items' => $items,]);
+        $shop = $this -> shopRepo -> getByPlayerIdAndType($request -> player_id, $request -> shop_type);
+        return response() -> json(['shop' => $shop,]);
     }
 }

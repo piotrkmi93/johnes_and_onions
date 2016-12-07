@@ -58,12 +58,21 @@
 
     <script src="{{ asset('/js/angular/jaoApp.js') }}"></script>
 
-    <script src="{{ asset('/js/angular/playerModule/jaoApp.player.js') }}"></script>
-    <script src="{{ asset('/js/angular/playerModule/jaoApp.player.createController.js') }}"></script>
-    <script src="{{ asset('/js/angular/playerModule/jaoApp.player.detailsController.js') }}"></script>
+    <script src="{{ asset('/js/angular/player/jaoApp.player.js') }}"></script>
+    <script src="{{ asset('/js/angular/player/jaoApp.player.createController.js') }}"></script>
+    <script src="{{ asset('/js/angular/player/jaoApp.player.detailsController.js') }}"></script>
 
-    <script src="{{ asset('/js/angular/navModule/jaoApp.nav.js') }}"></script>
-    <script src="{{ asset('/js/angular/navModule/jaoApp.nav.navController.js') }}"></script>
+    <script src="{{ asset('/js/angular/nav/jaoApp.nav.js') }}"></script>
+    <script src="{{ asset('/js/angular/nav/jaoApp.nav.navController.js') }}"></script>
+
+    <script src="{{ asset('/js/angular/battle/jaoApp.battle.js') }}"></script>
+    <script src="{{ asset('/js/angular/battle/jaoApp.battle.battleController.js') }}"></script>
+
+    <script src="{{ asset('/js/angular/shop/jaoApp.shop.js') }}"></script>
+    <script src="{{ asset('/js/angular/shop/jaoApp.shop.shopController.js') }}"></script>
+
+    <script src="{{ asset('/js/angular/ranking/jaoApp.ranking.js') }}"></script>
+    <script src="{{ asset('/js/angular/ranking/jaoApp.ranking.rankingController.js') }}"></script>
 
 </body>
 </html>

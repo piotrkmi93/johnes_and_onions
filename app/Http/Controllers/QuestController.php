@@ -156,7 +156,7 @@ class QuestController extends FightController
                     'dexterity_points' => rand(0, $player -> required_experience_points * 0.01),
                     'intelligence_points' => rand(0, $player -> required_experience_points * 0.01),
                     'durability_points' => rand(0, $player -> required_experience_points * 0.01),
-                    'lucky_points' => rand(0, $player -> required_experience_points * 0.01),
+                    'luck_points' => rand(0, $player -> required_experience_points * 0.01),
                     'damage_min_points' => ($type == 'sword' || $type == 'wand') ? rand($player -> required_experience_points * 0.01, $player -> required_experience_points * 0.02) : 0,
                     'damage_max_points' => ($type == 'sword' || $type == 'wand') ? rand($player -> required_experience_points * 0.02, $player -> required_experience_points * 0.03) : 0,
                 ],

@@ -15,6 +15,7 @@ class Character extends Model
             -> with('eyesVariant')
             -> with('mouthVariant')
             -> with('headVariant')
-            -> with('noseVariant');
+            -> with('noseVariant')
+            -> with('bodyVariant');
     }
 }

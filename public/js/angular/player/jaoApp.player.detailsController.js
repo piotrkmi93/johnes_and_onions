@@ -110,7 +110,18 @@
             self.intelligence_points = response.data.player.character.intelligence_points;
             self.durability_points = response.data.player.character.durability_points;
             self.luck_points = response.data.player.character.luck_points;
+
+            self.helmet  = response.data.player.helmet;
+            self.armor  = response.data.player.armor;
+            self.gloves  = response.data.player.gloves;
+            self.boots  = response.data.player.boots;
             self.weapon = response.data.player.weapon;
+            self.necklace  = response.data.player.necklace;
+            self.ring  = response.data.player.ring;
+            self.accessory  = response.data.player.accessory;
+            self.belt  = response.data.player.belt;
+            self.shield  = response.data.player.shield;
+
             self.backpack = response.data.player.backpack;
 
             $scope.$emit("goldChange", response.data.player.amount_of_gold)
@@ -129,7 +140,7 @@
         }
 
         function criticalChance() {
-            return calculateLuck() * 5 / (self.level * 2);
+            return Math.round(calculateLuck() * 5 / (self.level * 2));
         }
 
         function calculateStrength() {
@@ -226,6 +237,5 @@
         });
 
         window.self = self;
-        console.log(self);
     }
 })();

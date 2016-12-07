@@ -147,6 +147,17 @@ nav ul li {
     display: block;
 }
 
+.ranking-row{
+    cursor: pointer;
+}
+.ranking-row-selected{
+    background: #26a69a;
+}
+
+table.highlight > tbody > tr:hover{
+    background-color: #06867a;
+}
+
 }
 
 .hit{

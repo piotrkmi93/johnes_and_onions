@@ -13,7 +13,7 @@ class Quest extends Model
     }
 
     public function monster(){
-        return $this -> belongsTo(Monster::class);
+        return $this -> belongsTo(Monster::class) -> with('character');
     }
 
     public function itemReward(){

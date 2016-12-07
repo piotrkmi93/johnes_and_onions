@@ -38,7 +38,7 @@ class FightController extends Controller
                 $attack_value *= 2;
                 $is_critical = true;
             }
-        }
+    }
 
         $defender_hp -= $attack_value;
 
