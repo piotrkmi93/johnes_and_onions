@@ -87,7 +87,7 @@ class PlayerController extends Controller
         $weapon = $this -> itemRepo -> create('sword', $itemName, array(
             'damage_min_points' => 10,
             'damage_max_points' => 20,
-        ), 1, 1);
+        ), 1, 26);
 
         $this -> setItem($weapon->id, 'weapon', $player->id);
 

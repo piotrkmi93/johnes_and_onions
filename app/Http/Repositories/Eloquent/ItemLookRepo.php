@@ -44,7 +44,7 @@ class ItemLookRepo implements IItemLookRepo
      */
     public function getRandom($type)
     {
-        return $this -> model -> where('type', 'like', $type) -> orderBy(DB::raw('RADN()')) -> first();
+        return $this -> model -> where('item_type', 'like', $type) -> orderBy(DB::raw('RAND()')) -> first();
     }
 
 

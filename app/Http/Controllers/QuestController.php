@@ -131,6 +131,10 @@ class QuestController extends FightController
      */
     private function create(Player $player)
     {
+//        $type = $this -> randomItemType();
+//        echo $type . '<br>';
+//        dd($this -> itemLookRepo -> getRandom($type)['id']);
+
         $characterLook = $this -> characterLookRepo -> create(
             $this -> characterLookVariantRepo -> getRandom('body') -> id,
             $this -> characterLookVariantRepo -> getRandom('hair') -> id,
@@ -164,8 +168,8 @@ class QuestController extends FightController
                     $player -> required_experience_points * 0.05,
                     $player -> required_experience_points * 0.1
                 ),
-                //$this -> itemLookRepo -> getRandom($type) // odkomentować jak będą obrazki
-                1
+                $this -> itemLookRepo -> getRandom($type)['id'] // odkomentować jak będą obrazki
+//                1
             ) -> id;
         }
 

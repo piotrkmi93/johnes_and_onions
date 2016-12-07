@@ -147,8 +147,8 @@ class ShopController extends Controller
                 $player->required_experience_points * 0.05,
                 $player->required_experience_points * 0.1
             ),
-            //$this -> itemLookRepo -> getRandom($type) // odkomentować jak będą obrazki
-            1
+            $this -> itemLookRepo -> getRandom($type)['id'] // odkomentować jak będą obrazki
+//            1
         );
     }
 
