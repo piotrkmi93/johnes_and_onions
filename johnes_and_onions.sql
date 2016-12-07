@@ -482,18 +482,16 @@ ALTER TABLE `words`
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 -- 09.11.2016 Aktualizacja baz Lukasz Adler
-TRUNCATE TABLE  forge.look_variant_colors
-INSERT INTO forge.look_variant_colors (name) VALUES ('brown');
-INSERT INTO forge.look_variant_colors (name) VALUES ('red');
-INSERT INTO forge.look_variant_colors (name) VALUES ('yellow');
-INSERT INTO forge.look_variant_colors (name) VALUES ('purple');
-INSERT INTO forge.look_variant_colors (name) VALUES ('green');
-INSERT INTO forge.look_variant_colors (name) VALUES ('orange');
-INSERT INTO forge.look_variant_colors (name) VALUES ('pink');
-INSERT INTO forge.look_variant_colors (name) VALUES ('white');
-INSERT INTO forge.look_variant_colors (name) VALUES ('blue');
+INSERT INTO  look_variant_colors (name) VALUES ('brown');
+INSERT INTO  look_variant_colors (name) VALUES ('red');
+INSERT INTO  look_variant_colors (name) VALUES ('yellow');
+INSERT INTO  look_variant_colors (name) VALUES ('purple');
+INSERT INTO  look_variant_colors (name) VALUES ('green');
+INSERT INTO  look_variant_colors (name) VALUES ('orange');
+INSERT INTO  look_variant_colors (name) VALUES ('pink');
+INSERT INTO  look_variant_colors (name) VALUES ('white');
+INSERT INTO  look_variant_colors (name) VALUES ('blue');
 
-TRUNCATE TABLE character_look_variants
 INSERT INTO character_look_variants (type, look_variant_color_id, image_url) VALUES ('body', 1, 'images/body1.png');
 INSERT INTO character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyebrow_1', 1, 'images/player/eyebrows/1/brwi1.png');
 INSERT INTO character_look_variants (type, look_variant_color_id, image_url) VALUES ('eyes_1', 1, 'images/player/eyes/1/oczy1.png');
