@@ -52,7 +52,7 @@ class ShopRepo implements IShopRepo
      */
     public function getByPlayerId($player_id)
     {
-        return $this -> model -> where('player_id', $player_id) -> with('item') -> get();
+        return $this -> model -> where('player_id', $player_id) -> with('backpack') -> get();
     }
 
     /**
@@ -62,7 +62,7 @@ class ShopRepo implements IShopRepo
      */
     public function getByPlayerIdAndType($player_id, $type)
     {
-        return $this -> model -> where('player_id', $player_id) -> where('type', $type) -> with('item') -> first();
+        return $this -> model -> where('player_id', $player_id) -> where('type', $type) -> with('backpack') -> first();
     }
 
     /**
@@ -91,7 +91,7 @@ class ShopRepo implements IShopRepo
      */
     public function get($id)
     {
-        return $this -> model -> with('item') -> find($id);
+        return $this -> model -> with('backpack') -> find($id);
     }
 
 
