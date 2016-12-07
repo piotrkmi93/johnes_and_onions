@@ -35,7 +35,7 @@
                                             @if($quest->itemReward->dexterity_points)<li>Dexterity points: {{ $quest->itemReward->dexterity_points }}</li>@endif
                                             @if($quest->itemReward->intelligence_points)<li>Intelligence points: {{ $quest->itemReward->intelligence_points }}</li>@endif
                                             @if($quest->itemReward->durability_points)<li>Durability points: {{ $quest->itemReward->durability_points }}</li>@endif
-                                            @if($quest->itemReward->lucky_points)<li>Lucky points: {{ $quest->itemReward->lucky_points }}</li>@endif
+                                            @if($quest->itemReward->luck_points)<li>luck points: {{ $quest->itemReward->luck_points }}</li>@endif
                                             @if($quest->itemReward->damage_min_points && $quest->itemReward->damage_max_points)<li>Damage points: {{ $quest->itemReward->damage_min_points }} - {{ $quest->itemReward->damage_max_points }}</li>@endif
                                         </ul>
                                     </div>

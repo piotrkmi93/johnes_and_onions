@@ -37,7 +37,7 @@
                                 <span ng-if="player.helmet.dexterity_points !== 0">Dexterity: //player.helmet.dexterity_points//<br></span>
                                 <span ng-if="player.helmet.intelligence_points !== 0">Intelligence: //player.helmet.intelligence_points//<br></span>
                                 <span ng-if="player.helmet.durability_points !== 0">Durability: //player.helmet.durability_points//<br></span>
-                                <span ng-if="player.helmet.lucky_points !== 0">Luck: //player.helmet.lucky_points//<br></span>
+                                <span ng-if="player.helmet.luck_points !== 0">Luck: //player.helmet.luck_points//<br></span>
                                 <span ng-if="player.helmet.damage_min_points !== 0">Min damage points: //player.helmet.damage_min_points//<br></span>
                                 <span ng-if="player.helmet.damage_max_points !== 0">Max damage points: //player.helmet.damage_max_points//<br></span>
                                 <span>Price: //player.helmet.price//</span>
@@ -72,7 +72,7 @@
                                 <span ng-if="player.armor.dexterity_points !== 0">Dexterity: //player.armor.dexterity_points//<br></span>
                                 <span ng-if="player.armor.intelligence_points !== 0">Intelligence: //player.armor.intelligence_points//<br></span>
                                 <span ng-if="player.armor.durability_points !== 0">Durability: //player.armor.durability_points//<br></span>
-                                <span ng-if="player.armor.lucky_points !== 0">Luck: //player.armor.lucky_points//<br></span>
+                                <span ng-if="player.armor.luck_points !== 0">Luck: //player.armor.luck_points//<br></span>
                                 <span ng-if="player.armor.damage_min_points !== 0">Min damage points: //player.armor.damage_min_points//<br></span>
                                 <span ng-if="player.armor.damage_max_points !== 0">Max damage points: //player.armor.damage_max_points//<br></span>
                                 <span>Price: //player.armor.price//</span>
@@ -106,7 +106,7 @@
                                 <span ng-if="player.gloves.dexterity_points !== 0">Dexterity: //player.gloves.dexterity_points//<br></span>
                                 <span ng-if="player.gloves.intelligence_points !== 0">Intelligence: //player.gloves.intelligence_points//<br></span>
                                 <span ng-if="player.gloves.durability_points !== 0">Durability: //player.gloves.durability_points//<br></span>
-                                <span ng-if="player.gloves.lucky_points !== 0">Luck: //player.gloves.lucky_points//<br></span>
+                                <span ng-if="player.gloves.luck_points !== 0">Luck: //player.gloves.luck_points//<br></span>
                                 <span ng-if="player.gloves.damage_min_points !== 0">Min damage points: //player.gloves.damage_min_points//<br></span>
                                 <span ng-if="player.gloves.damage_max_points !== 0">Max damage points: //player.gloves.damage_max_points//<br></span>
                                 <span>Price: //player.gloves.price//</span>
@@ -140,7 +140,7 @@
                                 <span ng-if="player.boots.dexterity_points !== 0">Dexterity: //player.boots.dexterity_points//<br></span>
                                 <span ng-if="player.boots.intelligence_points !== 0">Intelligence: //player.boots.intelligence_points//<br></span>
                                 <span ng-if="player.boots.durability_points !== 0">Durability: //player.boots.durability_points//<br></span>
-                                <span ng-if="player.boots.lucky_points !== 0">Luck: //player.boots.lucky_points//<br></span>
+                                <span ng-if="player.boots.luck_points !== 0">Luck: //player.boots.luck_points//<br></span>
                                 <span ng-if="player.boots.damage_min_points !== 0">Min damage points: //player.boots.damage_min_points//<br></span>
                                 <span ng-if="player.boots.damage_max_points !== 0">Max damage points: //player.boots.damage_max_points//<br></span>
                                 <span>Price: //player.boots.price//</span>
@@ -174,7 +174,7 @@
                                 <span ng-if="player.weapon.dexterity_points !== 0">Dexterity: //player.weapon.dexterity_points//<br></span>
                                 <span ng-if="player.weapon.intelligence_points !== 0">Intelligence: //player.weapon.intelligence_points//<br></span>
                                 <span ng-if="player.weapon.durability_points !== 0">Durability: //player.weapon.durability_points//<br></span>
-                                <span ng-if="player.weapon.lucky_points !== 0">Luck: //player.weapon.lucky_points//<br></span>
+                                <span ng-if="player.weapon.luck_points !== 0">Luck: //player.weapon.luck_points//<br></span>
                                 <span ng-if="player.weapon.damage_min_points !== 0">Min damage points: //player.weapon.damage_min_points//<br></span>
                                 <span ng-if="player.weapon.damage_max_points !== 0">Max damage points: //player.weapon.damage_max_points//<br></span>
                                 <span>Price: //player.weapon.price//</span>
@@ -237,7 +237,7 @@
                                 <span ng-if="player.necklace.dexterity_points !== 0">Dexterity: //player.necklace.dexterity_points//<br></span>
                                 <span ng-if="player.necklace.intelligence_points !== 0">Intelligence: //player.necklace.intelligence_points//<br></span>
                                 <span ng-if="player.necklace.durability_points !== 0">Durability: //player.necklace.durability_points//<br></span>
-                                <span ng-if="player.necklace.lucky_points !== 0">Luck: //player.necklace.lucky_points//<br></span>
+                                <span ng-if="player.necklace.luck_points !== 0">Luck: //player.necklace.luck_points//<br></span>
                                 <span ng-if="player.necklace.damage_min_points !== 0">Min damage points: //player.necklace.damage_min_points//<br></span>
                                 <span ng-if="player.necklace.damage_max_points !== 0">Max damage points: //player.necklace.damage_max_points//<br></span>
                                 <span>Price: //player.necklace.price//</span>
@@ -271,7 +271,7 @@
                                 <span ng-if="player.ring.dexterity_points !== 0">Dexterity: //player.ring.dexterity_points//<br></span>
                                 <span ng-if="player.ring.intelligence_points !== 0">Intelligence: //player.ring.intelligence_points//<br></span>
                                 <span ng-if="player.ring.durability_points !== 0">Durability: //player.ring.durability_points//<br></span>
-                                <span ng-if="player.ring.lucky_points !== 0">Luck: //player.ring.lucky_points//<br></span>
+                                <span ng-if="player.ring.luck_points !== 0">Luck: //player.ring.luck_points//<br></span>
                                 <span ng-if="player.ring.damage_min_points !== 0">Min damage points: //player.ring.damage_min_points//<br></span>
                                 <span ng-if="player.ring.damage_max_points !== 0">Max damage points: //player.ring.damage_max_points//<br></span>
                                 <span>Price: //player.ring.price//</span>
@@ -305,7 +305,7 @@
                                 <span ng-if="player.accessory.dexterity_points !== 0">Dexterity: //player.accessory.dexterity_points//<br></span>
                                 <span ng-if="player.accessory.intelligence_points !== 0">Intelligence: //player.accessory.intelligence_points//<br></span>
                                 <span ng-if="player.accessory.durability_points !== 0">Durability: //player.accessory.durability_points//<br></span>
-                                <span ng-if="player.accessory.lucky_points !== 0">Luck: //player.accessory.lucky_points//<br></span>
+                                <span ng-if="player.accessory.luck_points !== 0">Luck: //player.accessory.luck_points//<br></span>
                                 <span ng-if="player.accessory.damage_min_points !== 0">Min damage points: //player.accessory.damage_min_points//<br></span>
                                 <span ng-if="player.accessory.damage_max_points !== 0">Max damage points: //player.accessory.damage_max_points//<br></span>
                                 <span>Price: //player.accessory.price//</span>
@@ -339,7 +339,7 @@
                                 <span ng-if="player.belt.dexterity_points !== 0">Dexterity: //player.belt.dexterity_points//<br></span>
                                 <span ng-if="player.belt.intelligence_points !== 0">Intelligence: //player.belt.intelligence_points//<br></span>
                                 <span ng-if="player.belt.durability_points !== 0">Durability: //player.belt.durability_points//<br></span>
-                                <span ng-if="player.belt.lucky_points !== 0">Luck: //player.belt.lucky_points//<br></span>
+                                <span ng-if="player.belt.luck_points !== 0">Luck: //player.belt.luck_points//<br></span>
                                 <span ng-if="player.belt.damage_min_points !== 0">Min damage points: //player.belt.damage_min_points//<br></span>
                                 <span ng-if="player.belt.damage_max_points !== 0">Max damage points: //player.belt.damage_max_points//<br></span>
                                 <span>Price: //player.belt.price//</span>
@@ -373,7 +373,7 @@
                                 <span ng-if="player.shield.dexterity_points !== 0">Dexterity: //player.shield.dexterity_points//<br></span>
                                 <span ng-if="player.shield.intelligence_points !== 0">Intelligence: //player.shield.intelligence_points//<br></span>
                                 <span ng-if="player.shield.durability_points !== 0">Durability: //player.shield.durability_points//<br></span>
-                                <span ng-if="player.shield.lucky_points !== 0">Luck: //player.shield.lucky_points//<br></span>
+                                <span ng-if="player.shield.luck_points !== 0">Luck: //player.shield.luck_points//<br></span>
                                 <span ng-if="player.shield.damage_min_points !== 0">Min damage points: //player.shield.damage_min_points//<br></span>
                                 <span ng-if="player.shield.damage_max_points !== 0">Max damage points: //player.shield.damage_max_points//<br></span>
                                 <span>Price: //player.shield.price//</span>
@@ -411,7 +411,7 @@
                             <span ng-if="player.backpack[index].dexterity_points !== 0">Dexterity: //player.backpack.items[index].item.dexterity_points//<br></span>
                             <span ng-if="player.backpack[index].intelligence_points !== 0">Intelligence: //player.backpack.items[index].item.intelligence_points//<br></span>
                             <span ng-if="player.backpack[index].durability_points !== 0">Durability: //player.backpack.items[index].item.durability_points//<br></span>
-                            <span ng-if="player.backpack[index].lucky_points !== 0">Luck: //player.backpack.items[index].item.lucky_points//<br></span>
+                            <span ng-if="player.backpack[index].luck_points !== 0">Luck: //player.backpack.items[index].item.luck_points//<br></span>
                             <span ng-if="player.backpack[index].damage_min_points !== 0">Min damage points: //player.backpack.items[index].item.damage_min_points//<br></span>
                             <span ng-if="player.backpack[index].damage_max_points !== 0">Max damage points: //player.backpack.items[index].item.damage_max_points//<br></span>
                             <span>Price: //player.backpack.items[index].item.price//</span>
@@ -442,7 +442,7 @@
                             <span ng-if="player.backpack[index].dexterity_points !== 0">Dexterity: //player.backpack.items[index].item.dexterity_points//<br></span>
                             <span ng-if="player.backpack[index].intelligence_points !== 0">Intelligence: //player.backpack.items[index].item.intelligence_points//<br></span>
                             <span ng-if="player.backpack[index].durability_points !== 0">Durability: //player.backpack.items[index].item.durability_points//<br></span>
-                            <span ng-if="player.backpack[index].lucky_points !== 0">Luck: //player.backpack.items[index].item.lucky_points//<br></span>
+                            <span ng-if="player.backpack[index].luck_points !== 0">Luck: //player.backpack.items[index].item.luck_points//<br></span>
                             <span ng-if="player.backpack[index].damage_min_points !== 0">Min damage points: //player.backpack.items[index].item.damage_min_points//<br></span>
                             <span ng-if="player.backpack[index].damage_max_points !== 0">Max damage points: //player.backpack.items[index].item.damage_max_points//<br></span>
                             <span>Price: //player.backpack.items[index].item.price//</span>
@@ -459,7 +459,7 @@
                         <p>Dexterity points: //player.dexterity_points// <button class="waves-effect waves-light btn" ng-click="player.increase('dexterity')"><i class="fa fa-plus"></i></button></p>
                         <p>Intelligence points: //player.intelligence_points// <button class="waves-effect waves-light btn" ng-click="player.increase('intelligence')"><i class="fa fa-plus"></i></button></p>
                         <p>Durability points: //player.durability_points// <button class="waves-effect waves-light btn" ng-click="player.increase('durability')"><i class="fa fa-plus"></i></button></p>
-                        <p>Luck points: //player.lucky_points// <button class="waves-effect waves-light btn" ng-click="player.increase('luck')"><i class="fa fa-plus"></i></button></p>
+                        <p>Luck points: //player.luck_points// <button class="waves-effect waves-light btn" ng-click="player.increase('luck')"><i class="fa fa-plus"></i></button></p>
                     </div>
 
                     <div class="col s6">

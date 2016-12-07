@@ -35,7 +35,7 @@
                     <p>Dexterity points: {{ $player_1->statistics()['dexterity_points'] }}</p>
                     <p>Intelligence points: {{ $player_1->statistics()['intelligence_points'] }}</p>
                     <p>Durability points: {{ $player_1->statistics()['durability_points'] }}</p>
-                    <p>Luck points: {{ $player_1->statistics()['lucky_points'] }}</p>
+                    <p>Luck points: {{ $player_1->statistics()['luck_points'] }}</p>
                 </div>
 
             </div>
@@ -74,7 +74,7 @@
                         <p>Dexterity points: {{ $player_2->statistics()['dexterity_points'] }}</p>
                         <p>Intelligence points: {{ $player_2->statistics()['intelligence_points'] }}</p>
                         <p>Durability points: {{ $player_2->statistics()['durability_points'] }}</p>
-                        <p>Luck points: {{ $player_2->statistics()['lucky_points'] }}</p>
+                        <p>Luck points: {{ $player_2->statistics()['luck_points'] }}</p>
                     </div>
                 </div>
             </div>

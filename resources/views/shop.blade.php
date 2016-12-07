@@ -55,7 +55,7 @@
                             <span ng-if="shop.shop.backpack[index].dexterity_points !== 0">Dexterity: //shop.shop.backpack.items[index].item.dexterity_points//<br></span>
                             <span ng-if="shop.shop.backpack[index].intelligence_points !== 0">Intelligence: //shop.shop.backpack.items[index].item.intelligence_points//<br></span>
                             <span ng-if="shop.shop.backpack[index].durability_points !== 0">Durability: //shop.shop.backpack.items[index].item.durability_points//<br></span>
-                            <span ng-if="shop.shop.backpack[index].lucky_points !== 0">Luck: //shop.shop.backpack.items[index].item.lucky_points//<br></span>
+                            <span ng-if="shop.shop.backpack[index].luck_points !== 0">Luck: //shop.shop.backpack.items[index].item.luck_points//<br></span>
                             <span ng-if="shop.shop.backpack[index].damage_min_points !== 0">Min damage points: //shop.shop.backpack.items[index].item.damage_min_points//<br></span>
                             <span ng-if="shop.shop.backpack[index].damage_max_points !== 0">Max damage points: //shop.shop.backpack.items[index].item.damage_max_points//<br></span>
                             <span>Price: //shop.shop.backpack.items[index].item.price//</span>
@@ -87,7 +87,7 @@
                             <span ng-if="shop.shop.backpack[index].dexterity_points !== 0">Dexterity: //shop.shop.backpack.items[index].item.dexterity_points//<br></span>
                             <span ng-if="shop.shop.backpack[index].intelligence_points !== 0">Intelligence: //shop.shop.backpack.items[index].item.intelligence_points//<br></span>
                             <span ng-if="shop.shop.backpack[index].durability_points !== 0">Durability: //shop.shop.backpack.items[index].item.durability_points//<br></span>
-                            <span ng-if="shop.shop.backpack[index].lucky_points !== 0">Luck: //shop.shop.backpack.items[index].item.lucky_points//<br></span>
+                            <span ng-if="shop.shop.backpack[index].luck_points !== 0">Luck: //shop.shop.backpack.items[index].item.luck_points//<br></span>
                             <span ng-if="shop.shop.backpack[index].damage_min_points !== 0">Min damage points: //shop.shop.backpack.items[index].item.damage_min_points//<br></span>
                             <span ng-if="shop.shop.backpack[index].damage_max_points !== 0">Max damage points: //shop.shop.backpack.items[index].item.damage_max_points//<br></span>
                             <span>Price: //shop.shop.backpack.items[index].item.price//</span>
@@ -136,7 +136,7 @@
                         <span ng-if="shop.player.backpack[index].dexterity_points !== 0">Dexterity: //shop.player.backpack.items[index].item.dexterity_points//<br></span>
                         <span ng-if="shop.player.backpack[index].intelligence_points !== 0">Intelligence: //shop.player.backpack.items[index].item.intelligence_points//<br></span>
                         <span ng-if="shop.player.backpack[index].durability_points !== 0">Durability: //shop.player.backpack.items[index].item.durability_points//<br></span>
-                        <span ng-if="shop.player.backpack[index].lucky_points !== 0">Luck: //shop.player.backpack.items[index].item.lucky_points//<br></span>
+                        <span ng-if="shop.player.backpack[index].luck_points !== 0">Luck: //shop.player.backpack.items[index].item.luck_points//<br></span>
                         <span ng-if="shop.player.backpack[index].damage_min_points !== 0">Min damage points: //shop.player.backpack.items[index].item.damage_min_points//<br></span>
                         <span ng-if="shop.player.backpack[index].damage_max_points !== 0">Max damage points: //shop.player.backpack.items[index].item.damage_max_points//<br></span>
                         <span>Price: //shop.player.backpack.items[index].item.price//</span>
@@ -168,7 +168,7 @@
                         <span ng-if="shop.player.backpack[index].dexterity_points !== 0">Dexterity: //shop.player.backpack.items[index].item.dexterity_points//<br></span>
                         <span ng-if="shop.player.backpack[index].intelligence_points !== 0">Intelligence: //shop.player.backpack.items[index].item.intelligence_points//<br></span>
                         <span ng-if="shop.player.backpack[index].durability_points !== 0">Durability: //shop.player.backpack.items[index].item.durability_points//<br></span>
-                        <span ng-if="shop.player.backpack[index].lucky_points !== 0">Luck: //shop.player.backpack.items[index].item.lucky_points//<br></span>
+                        <span ng-if="shop.player.backpack[index].luck_points !== 0">Luck: //shop.player.backpack.items[index].item.luck_points//<br></span>
                         <span ng-if="shop.player.backpack[index].damage_min_points !== 0">Min damage points: //shop.player.backpack.items[index].item.damage_min_points//<br></span>
                         <span ng-if="shop.player.backpack[index].damage_max_points !== 0">Max damage points: //shop.player.backpack.items[index].item.damage_max_points//<br></span>
                         <span>Price: //shop.player.backpack.items[index].item.price//</span>

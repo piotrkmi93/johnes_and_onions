@@ -53,7 +53,7 @@
         }
 
         function calculateLuck() {
-            return calculate('lucky_points')
+            return calculate('luck_points')
         }
 
         function calculate(parameter) {

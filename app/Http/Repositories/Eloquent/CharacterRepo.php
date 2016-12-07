@@ -41,7 +41,7 @@ class CharacterRepo implements ICharacterRepo
         $monsterCharacter -> dexterity_points = rand($playerCharacter -> dexterity_points * 0.5, $playerCharacter -> dexterity_points * 1.05);
         $monsterCharacter -> intelligence_points = rand($playerCharacter -> intelligence_points * 0.5, $playerCharacter -> intelligence_points * 1.05);
         $monsterCharacter -> durability_points = rand($playerCharacter -> durability_points * 0.5, $playerCharacter -> durability_points * 1.05);
-        $monsterCharacter -> lucky_points = rand($playerCharacter -> lucky_points * 0.5, $playerCharacter -> lucky_points * 1.05);
+        $monsterCharacter -> luck_points = rand($playerCharacter -> luck_points * 0.5, $playerCharacter -> luck_points * 1.05);
 
         return $this -> save($monsterCharacter);
     }
@@ -87,7 +87,7 @@ class CharacterRepo implements ICharacterRepo
     public function increaseLuck($id)
     {
         $character = $this -> get($id);
-        $character -> lucky_points += 1;
+        $character -> luck_points += 1;
         return $this -> save($character);
     }
 

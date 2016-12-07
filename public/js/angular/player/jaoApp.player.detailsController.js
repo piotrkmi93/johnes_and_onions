@@ -109,7 +109,7 @@
             self.dexterity_points = response.data.player.character.dexterity_points;
             self.intelligence_points = response.data.player.character.intelligence_points;
             self.durability_points = response.data.player.character.durability_points;
-            self.lucky_points = response.data.player.character.lucky_points;
+            self.luck_points = response.data.player.character.luck_points;
 
             self.helmet  = response.data.player.helmet;
             self.armor  = response.data.player.armor;
@@ -160,7 +160,7 @@
         }
 
         function calculateLuck() {
-            return calculate('lucky_points')
+            return calculate('luck_points')
         }
 
         function calculate(parameter) {
