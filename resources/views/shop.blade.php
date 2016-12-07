@@ -18,7 +18,13 @@
                 </h1>
 
                 <div class="character-box">
-                    <img src="{{ asset("/images/blacksmith.jpg") }}">
+                    @if($shop -> type === "armorer")
+                        <img src="{{ asset("/images/armorer.jpg") }}">
+                    @elseif($shop -> type === "blacksmith")
+                        <img src="{{ asset("/images/blacksmith.jpg") }}">
+                    @elseif($shop -> type === "jeweler")
+                        <img src="{{ asset("/images/jeweler.jpg") }}">
+                    @endif
                 </div>
 
                 <hr>
