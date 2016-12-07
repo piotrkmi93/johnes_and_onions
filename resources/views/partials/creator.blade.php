@@ -16,13 +16,13 @@
 
                     <div class="character-creator">
                         <div class="character-creator-preview col s6">
-                            <img src="{{ asset('images/body1.png') }}">
+                            <img ng-src="//player.selectedBody.image_url//">
                             <img ng-src="//player.selectedHead.image_url//">
                             <img ng-src="//player.selectedEyebrow.image_url//" >
                             <img ng-src="//player.selectedEyes.image_url//">
                             <img ng-src="//player.selectedHair.image_url//">
                             <img ng-src="//player.selectedNose.image_url//">
-                            <img src="{{ asset('images/mouth1.png') }}">
+                            <img ng-src="//player.selectedMouth.image_url//">
                         </div>
                         <div class="character-creator-pickers col s6">
 
@@ -30,9 +30,9 @@
                             <h5><button type="button" ng-click="player.previousEyebrowVariant()" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Eyebrow <button type="button" ng-click="player.nextEyebrowVariant()" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
                             <h5><button type="button" ng-click="player.previousHeadVariant()" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Head <button type="button" ng-click="player.nextHeadVariant()" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
                             <h5><button type="button" ng-click="player.previousEyesVariant()" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Eyes <button type="button" ng-click="player.nextEyesVariant()" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
-                            <h5><button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Hair <button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
+                            <h5><button type="button" ng-click="player.previousHairVariant()" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Hair <button type="button" ng-click="player.nextHairVariant()" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
                             <h5><button type="button" ng-click="player.previousNoseVariant()" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Nose <button type="button" ng-click="player.nextNoseVariant()" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
-                            <h5><button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Mouth <button type="button" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
+                            <h5><button type="button" ng-click="player.previousMouthVariant()" class="waves-effect waves-light btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></button> Mouth <button type="button" ng-click="player.nextMouthVariant()" class="waves-effect waves-light btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></h5>
 
                             <br>
 
@@ -45,13 +45,13 @@
                 </div>
 
                 {{-- tymczasowo na sztywno --}}
-                <input type="hidden" name="body_id" value="1">
+                <input type="hidden" name="body_id" value="//player.selectedBody.id//">
                 <input type="hidden" name="eyebrow_id" value="//player.selectedEyebrow.id//">
                 <input type="hidden" name="head_id" value="//player.selectedHead.id//">
                 <input type="hidden" name="eyes_id" value="//player.selectedEyes.id//">
                 <input type="hidden" name="hair_id" value="//player.selectedHair.id//">
                 <input type="hidden" name="nose_id" value="//player.selectedNose.id//">
-                <input type="hidden" name="mouth_id" value="7">
+                <input type="hidden" name="mouth_id" value="//player.selectedMouth.id//">
 
                 <br style="clear: both;">
 
